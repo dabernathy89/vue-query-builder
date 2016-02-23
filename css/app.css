@@ -1,0 +1,31 @@
+body {
+    padding-bottom: 40px;
+}
+
+.vqb-group {
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(200,200,200);
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.vqb-group .children .vqb-rule:first-child {
+    margin-top: 15px;
+}
+
+.vqb-group .vqb-group {
+    background-color: rgb(240,240,240);
+    margin-left: 15px;
+}
+
+.vqb-group .vqb-group .vqb-group {
+    background-color: rgb(255,255,255);
+}
+
+.vqb-group .vqb-group .vqb-group .vqb-group {
+    background-color: rgb(240,240,240);
+}
+
+.vqb-rule {
+    padding: 10px 15px;
+}

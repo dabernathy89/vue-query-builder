@@ -1,0 +1,36 @@
+{
+  "name": "vue-query-builder",
+  "description": "Vue JS Query Builder",
+  "author": "Daniel Abernathy <dabernathy89@gmail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "watchify -vd -p browserify-hmr -e src/main.js -o dist/build.js & http-server -c 1 -a localhost",
+    "build": "cross-env NODE_ENV=production browserify src/main.js | uglifyjs -c warnings=false -m > dist/build.js"
+  },
+  "dependencies": {
+    "vue": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-runtime": "^5.8.0",
+    "cross-env": "^1.0.6",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "browserify-hmr": "^0.3.1",
+    "http-server": "^0.8.5",
+    "uglify-js": "^2.5.0",
+    "vue-hot-reload-api": "^1.2.2",
+    "vueify": "^8.0.0",
+    "vueify-insert-css": "^1.0.0",
+    "watchify": "^3.4.0"
+  },
+  "browserify": {
+    "transform": [
+      "vueify",
+      "babelify"
+    ]
+  }
+}

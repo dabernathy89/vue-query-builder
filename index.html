@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vue Query Builder</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    Vue JS Query Builder
+                </div>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/dabernathy89/vue-query-builder/">Source</a></li>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div id="query-builder">
+            <vqb-group
+                :sources="sources"
+                :comparison-operators="comparisonOperators">
+            </vqb-group>
+
+            <hr>
+            <h3>Query output:</h3>
+            <pre>{{ query | json }}</pre>
+        </div>
+    </div>
+
+    <script src="dist/build.js"></script>
+</body>
+</html>
