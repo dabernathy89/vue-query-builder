@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import VueQueryBuilder from '../src/index.vue'
+import App from './App'
 
 new Vue({
   el: '#app',
-  components: { 'vue-query-builder': VueQueryBuilder },
+  render: h => h(App)
 })
