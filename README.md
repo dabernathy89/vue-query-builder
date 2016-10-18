@@ -1,22 +1,23 @@
-# vue-query-builder
+Vue Query Builder
+======
 
-> Vue Query Builder
 
-## Build Setup
+#### A UI component for building complex queries with nested conditionals.
 
-``` bash
-# install dependencies
-npm install
+Vue Query Builder is a user interface that makes it easy for your users to create queries of any kind. It's useful if you need an interface for generating reports, filtering data, and more.
 
-# serve with hot reload at localhost:8080
-npm run dev
 
-# build the component to UMD js
-npm run build
+[Demo and documentation](https://dabernathy89.github.io/vue-query-builder/)
 
-# build the dev page
-npm run build:demo
+![alt text](https://github.com/dabernathy89/vue-query-builder/tree/master/docs/assets/demo-screnshot.png "Demo screenshot")
 
-# test
-npm run test
-```
+Vue Query Builder was built with Vue CLI, using [this template by @Coffcer](https://github.com/Coffcer/component).
+
+---
+
+
+##### Future goals
+- Tests
+- Reorder conditionals
+- Custom conditional templates
+- Accessibility
