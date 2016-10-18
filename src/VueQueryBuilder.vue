@@ -39,7 +39,9 @@ export default {
     rules: Array,
     labels: {
       type: Object,
-      default: defaultLabels
+      default () {
+        return defaultLabels;
+      }
     },
     styled: {
       type: Boolean,
