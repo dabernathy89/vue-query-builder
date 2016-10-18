@@ -1,9 +1,9 @@
-var path = require('path')
+var path = require('path');
 var config = require('./base');
-var webpack = require('webpack')
+var webpack = require('webpack');
 
 module.exports = Object.assign({}, config, {
-    entry: './src/index.vue',
+    entry: './src/VueQueryBuilder.vue',
     output: {
       path: path.resolve(__dirname, '../dist'),
       filename: 'vue-query-builder.js',

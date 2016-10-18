@@ -7,8 +7,8 @@
   "scripts": {
     "test": "karma start ./test/karma.conf.js",
     "dev": "webpack-dev-server --inline --hot --config ./build/dev.js --port 8080",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/prod.js && npm run build:demo",
-    "build:demo": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/dev.js"
+    "build": "NODE_ENV=production webpack --progress --hide-modules --config ./build/prod.js && npm run build:demo",
+    "build:demo": "NODE_ENV=production webpack --progress --hide-modules --config ./build/dev.js"
   },
   "license": "MIT",
   "repository": {
