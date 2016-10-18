@@ -2,7 +2,7 @@
   "name": "vue-query-builder",
   "description": "Vue Query Builder",
   "author": "Daniel Abernathy <daniel@danielabernathy.com>",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "./dist/vue-query-builder.js",
   "scripts": {
     "test": "karma start ./test/karma.conf.js",
