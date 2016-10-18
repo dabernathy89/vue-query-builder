@@ -10,6 +10,7 @@
         :rules="rules"
         :maxDepth="3"
         :labels="labels"
+        :initialQuery="initialQuery"
         @queryUpdated="queryUpdated"
         ></vue-query-builder>
 
@@ -36,6 +37,20 @@
 
     data () {
       return {
+        initialQuery: {
+          "logicalOperator": "Any",
+          "children": [
+            {
+              "type": "query-builder-rule",
+              "query": {
+                "rule": "first-name",
+                "selectedOperator": "equals",
+                "selectedOperand": "First Name",
+                "value": "John"
+              }
+            },
+          ]
+        },
         query: null,
         labels: {
           removeRule: "<span class='glyphicon glyphicon-remove'></span>",
@@ -46,6 +61,11 @@
             type: "text",
             id: "a-text-field",
             label: "A Text Field",
+          },
+          {
+            type: "text",
+            id: "first-name",
+            label: "First Name",
           },
           {
             type: "numeric",

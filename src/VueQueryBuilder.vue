@@ -53,7 +53,8 @@ export default {
       validator: function (value) {
         return value >= 1
       }
-    }
+    },
+    initialQuery: Object
   },
 
   data () {
@@ -126,6 +127,10 @@ export default {
       }, {
       deep: true
     });
+
+    if ( typeof this.$options.propsData.initialQuery !== "undefined" ) {
+      this.query = deepClone(this.$options.propsData.initialQuery);
+    }
   }
 }
 </script>
