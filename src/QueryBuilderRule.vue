@@ -16,6 +16,10 @@
       <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
       <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value"></input>
 
+      <template v-if="isCustomComponent">
+        <Custom v-model="query.value"></Custom>
+      </template>
+
       <div class="checkbox" v-if="rule.inputType === 'checkbox'">
         <label v-for="choice in rule.choices">
           <input type="checkbox" :value="choice.value" v-model="query.value"> {{ choice.label }}
@@ -39,6 +43,12 @@ export default {
 
   props: ['query', 'index', 'rule', 'styled', 'labels'],
 
+  created () {
+    if (typeof this.rule.type === 'object') {
+      this.$options.components['Custom'] = this.rule.type;
+    }
+  },
+
   methods: {
     remove: function() {
       this.$emit('child-deletion-requested', this.index);
@@ -48,6 +58,10 @@ export default {
   computed: {
     isMultipleChoice () {
       return this.rule.inputType === 'radio' || this.rule.inputType === 'checkbox';
+    },
+
+    isCustomComponent () {
+      return typeof this.rule.type === 'object';
     }
   },
 
