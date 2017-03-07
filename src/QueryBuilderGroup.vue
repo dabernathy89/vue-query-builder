@@ -43,14 +43,6 @@
         </component>
       </div>
     </div>
-
-    <!-- <div class="vqb-group-footer" :class="{ 'panel-footer': styled }">
-      <div class="group-actions" :class="{ 'form-inline': styled }">
-        <div :class="{ 'form-group': styled }">
-
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
