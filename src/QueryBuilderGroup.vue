@@ -17,7 +17,7 @@
       <div class="rule-actions" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
           <select v-model="selectedRule" :class="{ 'form-control': styled }">
-            <option v-for="rule in rules" :value="rule">{{ rule.label }}</option>
+            <option v-for="rule in rules" :key="rule.id" :value="rule">{{ rule.label }}</option>
           </select>
 
           <button @click="addRule" :class="{ 'btn btn-default': styled }" v-html="labels.addRule"></button>
@@ -28,6 +28,7 @@
       <div class="children">
         <component
           v-for="(child, index) in query.children"
+          :key="index"
           :is="child.type"
           :type="child.type"
           :query="child.query"
