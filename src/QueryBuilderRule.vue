@@ -53,8 +53,8 @@ export default {
     remove: function() {
       this.$emit('child-deletion-requested', this.index);
     },
-    updateQuery(event) {
-      this.query.value = event.target.value
+    updateQuery(value) {
+      this.query.value = value
     }
   },
 
