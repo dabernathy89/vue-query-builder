@@ -1,6 +1,6 @@
 <template>
     <div class="range-input">
-        <input :value="value" @input="updateValue($event.target.value)" type="range" min="1" max="100" step="1">
+        <input :value="value" @input="updateValue" type="range" min="1" max="100" step="1">
         <span class="result-display">Value: {{ value }}</span>
     </div>
 </template>
@@ -12,8 +12,8 @@ export default {
     },
 
     methods: {
-        updateValue(val) {
-            this.$emit('input', parseInt(val));
+        updateValue(event) {
+            this.$emit('input', parseInt(event.target.value));
         }
     }
 }

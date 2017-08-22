@@ -31,7 +31,7 @@
           :key="index"
           :is="child.type"
           :type="child.type"
-          :query="child.query"
+          :query.sync="child.query"
           :ruleTypes="ruleTypes"
           :rules="rules"
           :rule="ruleById(child.query.rule)"
@@ -49,6 +49,7 @@
 
 <script>
 import QueryBuilderRule from './QueryBuilderRule.vue';
+import deepClone from './utilities.js';
 
 export default {
   name: "query-builder-group",
@@ -74,7 +75,8 @@ export default {
     },
 
     addRule () {
-      this.query.children.push({
+      let updated_query = deepClone(this.query);
+      updated_query.children.push({
         type: 'query-builder-rule',
         query: {
           rule: this.selectedRule.id,
@@ -83,17 +85,20 @@ export default {
           value: null
         }
       });
+      this.$emit('update:query', updated_query);
     },
 
     addGroup () {
+      let updated_query = deepClone(this.query);
       if ( this.depth < this.maxDepth ) {
-        this.query.children.push({
+        updated_query.children.push({
           type: 'query-builder-group',
           query: {
             logicalOperator: "All",
             children: []
           }
         });
+        this.$emit('update:query', updated_query);
       }
     },
 
@@ -102,7 +107,9 @@ export default {
     },
 
     removeChild (index) {
-      this.query.children.splice(index, 1);
+      let updated_query = deepClone(this.query);
+      updated_query.children.splice(index, 1);
+      this.$emit('update:query', updated_query);
     }
   },
 

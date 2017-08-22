@@ -17,7 +17,7 @@
       <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value"></input>
 
       <template v-if="isCustomComponent">
-        <component v-model="query.value" :is="rule.component"></component>
+        <component :value="query.value" @input="updateQuery" :is="rule.component"></component>
       </template>
 
       <div class="checkbox" v-if="rule.inputType === 'checkbox'">
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import deepClone from './utilities.js';
+
 export default {
   name: "query-builder-rule",
 
@@ -54,7 +56,9 @@ export default {
       this.$emit('child-deletion-requested', this.index);
     },
     updateQuery(value) {
-      this.query.value = value;
+      let updated_query = deepClone(this.query);
+      updated_query.value = value;
+      this.$emit('update:query', updated_query);
     }
   },
 
@@ -69,11 +73,14 @@ export default {
   },
 
   mounted () {
+    let updated_query = deepClone(this.query);
     if (this.rule.inputType === 'checkbox') {
-      this.query.value = [];
+      updated_query.value = [];
+      this.$emit('update:query', updated_query);
     }
     if (this.rule.type === 'custom-component') {
-      this.query.value = this.rule.default || null;
+      updated_query.value = this.rule.default || null;
+      this.$emit('update:query', updated_query);
     }
   }
 }

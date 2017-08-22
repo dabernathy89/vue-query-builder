@@ -2,7 +2,7 @@
   <div class="vue-query-builder" :class="{ 'vue-query-builder-styled': styled }">
     <query-builder-group
       :index="0"
-      :query="query"
+      :query.sync="query"
       :ruleTypes="ruleTypes"
       :rules="mergedRules"
       :maxDepth="maxDepth"
