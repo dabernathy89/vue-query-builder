@@ -19,5 +19,4 @@ Vue Query Builder was built with Vue CLI, using [this template by @Coffcer](http
 ##### Future goals
 - Tests
 - Reorder conditionals
-- Custom conditional templates
 - Accessibility
