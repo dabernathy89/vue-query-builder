@@ -31,6 +31,7 @@
   &gt;&lt;/vue-query-builder&gt;</code></pre>
 
     <pre><code class="language-javascript">import VueQueryBuilder from 'vue-query-builder';
+import RangeInput from 'range-input';
 
 export default {
   name: 'app',
@@ -67,6 +68,14 @@ export default {
             {label: "Standard", value: "standard"},
             {label: "Premium", value: "premium"}
           ]
+        },
+        {
+          type: "custom-component",
+          component: RangeInput,
+          id: 'range',
+          label: 'Range',
+          operators: ['='],
+          default: 1
         }
       ]
     }
@@ -109,13 +118,13 @@ export default {
           <tbody>
             <tr>
               <td>type</td>
-              <td>String from this list: <code>"text", "numeric", "custom", "radio", "checkbox"</code></td>
-              <td>Required. Determines the basic template for conditionals based on this rule. Each type has some basic defaults that can be overridden.</td>
+              <td>String from this list: <code>"text", "numeric", "custom", "radio", "checkbox", "custom-component"</code></td>
+              <td>Required. Determines the basic template for conditionals based on this rule. Each type has some basic defaults that can be overridden. You can include a custom component as long as it interacts properly with <code>v-model</code> (see more details <a href="https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events">in the Vue docs here</a>).</td>
             </tr>
             <tr>
               <td>id</td>
               <td>Any string</td>
-              <td>Optional - will be included in the final query object. If not set, defaults to a sensible value.</td>
+              <td>Optional - will be included in the final query object. If not set, defaults to a sensible value. For custom components, this will be the component's HTML tag.</td>
             </tr>
             <tr>
               <td>label</td>
@@ -146,6 +155,16 @@ export default {
               <td>inputType</td>
               <td>String with an HTML input type</td>
               <td>Optional. Override the HTML input type for a rule type.<br><br>Ex: <code>inputType: "email"</code></td>
+            </tr>
+            <tr>
+              <td>default</td>
+              <td>Mixed</td>
+              <td>Optional. Provide a default value. Currently only used for custom components.<br><br>Ex: <code>default: 123</code></td>
+            </tr>
+            <tr>
+              <td>component</td>
+              <td>An imported component</td>
+              <td>Required for type <code>custom-component</code>. See example in 'Basic Demo Source' above.<br><br>Ex: <code>component: RangeInput</code></td>
             </tr>
           </tbody>
         </table>
@@ -263,7 +282,8 @@ export default {
 
 <script>
 import Vue from 'vue';
-import VueQueryBuilder from 'vue-query-builder';
+import VueQueryBuilder from '../../src/VueQueryBuilder.vue';
+import RangeInput from '../../dev/RangeInput.vue';
 
 export default {
   name: 'app',
@@ -333,6 +353,14 @@ export default {
             {label: "Standard", value: "standard"},
             {label: "Premium", value: "premium"}
           ]
+        },
+        {
+          type: "custom-component",
+          component: RangeInput,
+          id: 'range',
+          label: 'Range',
+          operators: ['='],
+          default: 1
         }
       ]
     }
