@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^2.0.1",
-    "vue-query-builder": "^0.2.0"
+    "vue-query-builder": "^0.2.4"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
