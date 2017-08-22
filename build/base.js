@@ -2,21 +2,19 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  resolveLoader: {
-    root: path.join(__dirname, '../node_modules'),
-  },
   resolve: {
-    extensions: ['', '.js', '.vue']
+    extensions: ['.js', '.vue'],
+    modules: [__dirname, 'node_modules'],
   },
   module: {
     loaders: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {

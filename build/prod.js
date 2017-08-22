@@ -21,7 +21,6 @@ module.exports = Object.assign({}, config, {
         compress: {
           warnings: false
         }
-      }),
-      new webpack.optimize.OccurenceOrderPlugin()
+      })
     ]
 });
