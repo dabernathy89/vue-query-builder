@@ -23,6 +23,7 @@
 
 <script>
   import VueQueryBuilder from '../src/VueQueryBuilder.vue';
+  import RangeInput from './RangeInput';
 
   export default {
     components: {
@@ -136,6 +137,14 @@
             operators: ['=','<>','<','<=','>','>='],
             inputType: "number"
           },
+          {
+            type: "custom-component",
+            component: RangeInput,
+            id: 'range',
+            label: 'Range',
+            operators: ['='],
+            default: 1
+          }
         ]
       }
     }
