@@ -70,6 +70,21 @@ export default {
           ]
         },
         {
+          type: "select",
+          id: 'select',
+          label: 'Color',
+          operators: ['=', '<>', '<', '<=', '>', '>='],
+          choices: [
+            {label: "red", value: 'Red'},
+            {label: "orange", value: 'Orange'},
+            {label: "yellow", value: 'Yellow'},
+            {label: "green", value: 'Green'},
+            {label: "blue", value: 'Blue'},
+            {label: "indigo", value: 'Indigo'},
+            {label: "violet", value: 'Violet'},
+          ]
+        },
+        {
           type: "custom-component",
           component: RangeInput,
           id: 'range',
@@ -118,7 +133,7 @@ export default {
           <tbody>
             <tr>
               <td>type</td>
-              <td>String from this list: <code>"text", "numeric", "custom", "radio", "checkbox", "custom-component"</code></td>
+              <td>String from this list: <code>"text", "numeric", "custom", "radio", "checkbox", "select", "custom-component"</code></td>
               <td>Required. Determines the basic template for conditionals based on this rule. Each type has some basic defaults that can be overridden. You can include a custom component as long as it interacts properly with <code>v-model</code> (see more details <a href="https://vuejs.org/v2/guide/components.html#Form-Input-Components-using-Custom-Events">in the Vue docs here</a>).</td>
             </tr>
             <tr>
@@ -140,7 +155,7 @@ export default {
             <tr>
               <td>choices</td>
               <td>Array of objects, each with a `label` and `value` property.</td>
-              <td>Required for checkbox and radio rule types. Defines the individual radio and checkbox inputs.<br><br>
+              <td>Required for checkbox, radio, and select rule types. Defines the individual radio and checkbox inputs, or select options.<br><br>
               Ex: <code>choices: [{label: "Foo", value: "foo"}, {label: "Bar", value: "bar"}]</code>
               </td>
             </tr>
