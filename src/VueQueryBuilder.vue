@@ -92,6 +92,12 @@ export default {
           inputType: "checkbox",
           id: "checkbox-field"
         },
+        "select": {
+          operators: ['=','<>','<','<=','>','>='],
+          choices: [],
+          inputType: "select",
+          id: "select-field"
+        },
       }
     }
   },

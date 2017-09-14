@@ -32,6 +32,11 @@
         </label>
       </div>
 
+      <select :class="{ 'form-control': styled }" v-if="rule.inputType === 'select'" v-model="query.value">
+        <option selected=""></option>
+        <option v-for="choice in rule.choices" :value="choice.value">{{ choice.label }}</option>
+      </select>
+
       <button :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
     </div>
   </div>
