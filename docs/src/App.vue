@@ -73,7 +73,7 @@ export default {
           type: "select",
           id: 'select',
           label: 'Color',
-          operators: ['=', '<>', '<', '<=', '>', '>='],
+          operators: ['=', '<>'],
           choices: [
             {label: "red", value: 'Red'},
             {label: "orange", value: 'Orange'},
