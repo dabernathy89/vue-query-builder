@@ -155,7 +155,8 @@ export default {
             <tr>
               <td>choices</td>
               <td>Array of objects, each with a `label` and `value` property.</td>
-              <td>Required for checkbox, radio, and select rule types. Defines the individual radio and checkbox inputs, or select options.<br><br>
+              <td>Required for checkbox, radio, and select rule types. Defines the individual radio and checkbox inputs, or select options. Select inputs will default to the first item in the `choices` list; if you want an empty option
+              you must provide it yourself. <br><br>
               Ex: <code>choices: [{label: "Foo", value: "foo"}, {label: "Bar", value: "bar"}]</code>
               </td>
             </tr>

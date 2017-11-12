@@ -32,8 +32,11 @@
         </label>
       </div>
 
-      <select :class="{ 'form-control': styled }" v-if="rule.inputType === 'select'" v-model="query.value">
-        <option selected=""></option>
+      <select
+        v-if="rule.inputType === 'select'"
+        :class="{ 'form-control': styled }"
+        :multiple="rule.type === 'multi-select'"
+        v-model="query.value">
         <option v-for="choice in rule.choices" :value="choice.value">{{ choice.label }}</option>
       </select>
 
@@ -81,6 +84,10 @@ export default {
     let updated_query = deepClone(this.query);
     if (this.rule.inputType === 'checkbox') {
       updated_query.value = [];
+      this.$emit('update:query', updated_query);
+    }
+    if (this.rule.type === 'select') {
+      updated_query.value = this.rule.choices[0].value;
       this.$emit('update:query', updated_query);
     }
     if (this.rule.type === 'custom-component') {

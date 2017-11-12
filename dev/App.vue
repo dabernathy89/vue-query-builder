@@ -116,6 +116,27 @@
             ]
           },
           {
+            type: "select",
+            id: "select-field",
+            label: "A Single Select Field",
+            choices: [
+              {label: "Select...", value: ''},
+              {label: "Val 1", value: "val1"},
+              {label: "Val 2", value: "val2"},
+              {label: "Val 3", value: "val3"}
+            ]
+          },
+          {
+            type: "multi-select",
+            id: "multi-select-field",
+            label: "A Multi Select Field",
+            choices: [
+              {label: "Val 1", value: "val1"},
+              {label: "Val 2", value: "val2"},
+              {label: "Val 3", value: "val3"}
+            ]
+          },
+          {
             type: "custom",
             id: "a-custom-text-field",
             label: "A Custom Text Field",

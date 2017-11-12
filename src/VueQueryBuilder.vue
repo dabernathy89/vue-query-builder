@@ -98,6 +98,12 @@ export default {
           inputType: "select",
           id: "select-field"
         },
+        "multi-select": {
+          operators: ['='],
+          choices: [],
+          inputType: "select",
+          id: "multi-select-field"
+        },
       }
     }
   },
