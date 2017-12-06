@@ -21,7 +21,7 @@
           </select>
 
           <button type="button" @click="addRule" :class="{ 'btn btn-default': styled }" v-html="labels.addRule"></button>
-          <button type="button"> :class="{ 'btn btn-default': styled }" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"></button>
+          <button type="button" :class="{ 'btn btn-default': styled }" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"></button>
         </div>
       </div>
 
