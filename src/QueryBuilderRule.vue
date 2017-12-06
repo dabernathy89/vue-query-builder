@@ -40,7 +40,7 @@
         <option v-for="choice in rule.choices" :value="choice.value">{{ choice.label }}</option>
       </select>
 
-      <button :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
+      <button type="button" :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
     </div>
   </div>
 </template>
