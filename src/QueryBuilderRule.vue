@@ -83,11 +83,15 @@ export default {
   mounted () {
     let updated_query = deepClone(this.query);
     if (this.rule.inputType === 'checkbox') {
-      updated_query.value = [];
+      if(this.query.value === null){
+        updated_query.value = [];
+      }
       this.$emit('update:query', updated_query);
     }
     if (this.rule.type === 'select') {
-      updated_query.value = this.rule.choices[0].value;
+      if(this.query.value === null){
+        updated_query.value = this.rule.choices[0].value;
+      }
       this.$emit('update:query', updated_query);
     }
     if (this.rule.type === 'custom-component') {
