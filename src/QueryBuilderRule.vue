@@ -1,6 +1,6 @@
 <template>
-  <div class="vqb-rule" :class="{ 'panel panel-default form-inline': styled }">
-    <div :class="{ 'form-group': styled }">
+  <div class="vqb-rule" :class="{ 'card ': styled }">
+    <div :class="{ 'form-inline': styled }">
       <label>{{ rule.label }}</label>
 
       <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }">
@@ -21,13 +21,13 @@
       </template>
 
       <div class="checkbox" v-if="rule.inputType === 'checkbox'">
-        <label v-for="choice in rule.choices">
+        <label v-for="choice in rule.choices" :class="{ 'float-left': styled }">
           <input type="checkbox" :value="choice.value" v-model="query.value"> {{ choice.label }}
         </label>
       </div>
 
       <div class="radio" v-if="rule.inputType === 'radio'">
-        <label v-for="choice in rule.choices">
+        <label v-for="choice in rule.choices" :class="{ 'float-left': styled }">
           <input type="radio" :value="choice.value" v-model="query.value"> {{ choice.label }}
         </label>
       </div>
@@ -40,7 +40,7 @@
         <option v-for="choice in rule.choices" :value="choice.value">{{ choice.label }}</option>
       </select>
 
-      <button :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
+      <span class="ml-auto"><button :class="{ 'close float-right': styled }" @click="remove" v-html="labels.removeRule"></button></span>
     </div>
   </div>
 </template>
