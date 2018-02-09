@@ -13,7 +13,7 @@
         </option>
       </select>
 
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
+      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text' && query.selectedOperator != 'is null'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
       <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value"></input>
 
       <template v-if="isCustomComponent">
@@ -49,6 +49,7 @@
         <option v-for="choice in rule.choices" :value="choice.value">{{ choice.label }}</option>
       </select>
 
+      <h5 v-if="total > 0" class="pull-right"> {{total}} </h5>
       <button :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
     </div>
   </div>
@@ -60,7 +61,7 @@ import deepClone from './utilities.js';
 export default {
   name: "query-builder-rule",
 
-  props: ['query', 'index', 'rule', 'styled', 'labels'],
+  props: ['query', 'index', 'rule', 'styled', 'labels', 'total'],
 
   beforeMount () {
     if (this.rule.type === 'custom-component') {
