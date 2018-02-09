@@ -13,10 +13,10 @@
         </option>
       </select>
 
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text' && query.selectedOperator != 'is null'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
+      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text' && !hideInput" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
       <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value"></input>
 
-      <template v-if="isCustomComponent && query.selectedOperator != 'is null'">
+      <template v-if="isCustomComponent && !hideInput">
         <component :value="query.value" @input="updateQuery" :is="rule.component"></component>
       </template>
 
@@ -104,6 +104,10 @@ export default {
 
         return groups;
       }
+    },
+
+    hideInput () {
+      return this.query.selectedOperator == 'is null' || this.query.selectedOperator == 'is empty';      
     }     
   },
 
