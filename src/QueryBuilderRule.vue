@@ -32,6 +32,18 @@
         </label>
       </div>
 
+      <div v-if="rule.inputType === 'select2'" class="bg-white">
+        <v-select multiple @input="updateVSelectValue" v-model="rule.selected"  :options="rule.choices"></v-select>        
+      </div>
+      <div v-if="rule.inputType === 'date'" class="bg-white">
+        <input
+            type="text"
+            ref="node"
+            class="form-control date-picker"
+            v-model="query.value" 
+            >
+      </div>
+
       <select
         v-if="rule.inputType === 'select'"
         :class="{ 'form-control': styled }"
@@ -47,6 +59,7 @@
 
 <script>
 import deepClone from './utilities.js';
+import Pikaday from 'pikaday'
 
 export default {
   name: "query-builder-rule",
@@ -54,7 +67,7 @@ export default {
   props: ['query', 'index', 'rule', 'styled', 'labels'],
 
   beforeMount () {
-    if (this.rule.type === 'custom-component') {
+    if (this.rule.type === 'custom-component' || this.rule.type =='select2') {
       this.$options.components[this.id] = this.rule.component;
     }
   },
@@ -67,6 +80,12 @@ export default {
       let updated_query = deepClone(this.query);
       updated_query.value = value;
       this.$emit('update:query', updated_query);
+    },
+    updateVSelectValue: function(val){
+         this.$emit('input', val);
+         console.log(this.query);
+         this.query.value = val.map((item) => {return item.id }).join(",");
+         
     }
   },
 
@@ -94,6 +113,48 @@ export default {
       updated_query.value = this.rule.default || null;
       this.$emit('update:query', updated_query);
     }
+
+    if (this.rule.type === 'select2') {
+      updated_query.value = this.rule.default || null;
+      this.$emit('update:query', updated_query);
+    }
+     if (this.rule.type === 'date') {
+      updated_query.value = this.rule.default || null;
+      this.$emit('update:query', updated_query);
+      this.htmlNode = this.$refs.node
+      let vm = this
+      this.picker = new Pikaday({
+      field: this.htmlNode,
+      format: vm.rule.format!=null && vm.rule.format!= 'undefined' ? vm.rule.format: "DD/MM/YYYY",
+      showMonthAfterYear: this.showMonthAfterYear,
+      onSelect () {
+        
+        vm.currentDate = this.getMoment().toDate()
+        vm.$emit('onSelect', vm.currentDate);
+        vm.query.value = vm.picker.toString();
+      }
+    });
+    }
   }
 }
 </script>
+
+<style src="pikaday/css/pikaday.css"></style>
+<style scoped>
+input.date-picker.calendar-icon {
+  background-image: url(/static/calendar.png);
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.date-picker {
+  margin-right: 0;
+  margin-left: 0;
+  border: 1px solid #ccc;
+  padding: 9px 0;
+  line-height: 1.1;
+  color: #444;
+  border-radius: 3px;
+  text-indent: 13px;
+  cursor: pointer;
+}
+</style>
