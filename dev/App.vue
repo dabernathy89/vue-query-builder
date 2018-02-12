@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div id="app">
-      <h1 class="title">Vue Query Builder Demo</h1>
-      <a class="btn btn-default github-link" href="https://github.com/dabernathy89/vue-query-builder">Source on GitHub</a>
+      <h1 class="title">Vue Query Builder Demo - Boostrap 4</h1>
+      <a class="btn btn-default github-link" href="https://github.com/kailashrdave/vue-query-builder">Source on GitHub</a>
 
       <hr>
 
@@ -24,6 +24,9 @@
 <script>
   import VueQueryBuilder from '../src/VueQueryBuilder.vue';
   import RangeInput from './RangeInput';
+  import Vue from 'vue'    
+  import vSelect from 'vue-select'
+  Vue.component('v-select', vSelect)
 
   export default {
     components: {
@@ -54,8 +57,8 @@
         },
         query: null,
         labels: {
-          removeRule: "<span class='glyphicon glyphicon-remove'></span>",
-          removeGroup: "<span class='glyphicon glyphicon-remove'></span>",
+          removeRule: "&times;",
+          removeGroup: "&times;",
         },
         rules: [
           {
@@ -165,6 +168,28 @@
             label: 'Range',
             operators: ['='],
             default: 1
+          },
+          {
+            type: "select2",
+            id: "select2-field",
+            label: "A Select2 Field",
+            //selected:[{id:1,label:'A'}],
+            operators: ['IN'],
+            choices: [
+              {label: "Val 1", id: "1"},
+              {label: "Val 2", id: "2"},
+              {label: "Val 3", id: "3"}
+            ],
+            sourceUrl:'',
+            inputType:'select2'
+          },
+          {
+            type: "date",
+            id: "date-field",
+            label: "A date Field",
+            operators: ['=','<>','<','<=','>','>='],
+            inputType:'date',
+            format:"MM/DD/YYYY"
           }
         ]
       }

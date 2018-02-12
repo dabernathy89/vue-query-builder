@@ -1,6 +1,6 @@
 <template>
   <div class="vqb-group" :class="classObject">
-    <div class="vqb-group-heading" :class="{ 'panel-heading': styled }">
+    <div class="vqb-group-heading" :class="{ 'card-header': styled }">
       <div class="match-type-container" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
           <label for="vqb-match-type">{{ labels.matchType }}</label>
@@ -9,19 +9,22 @@
             <option>{{ labels.matchTypeAny }}</option>
           </select>
         </div>
-        <button :class="{ 'close pull-right': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
+        <button :class="{ 'close ml-auto': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
       </div>
     </div>
 
-    <div class="vqb-group-body" :class="{ 'panel-body': styled }">
-      <div class="rule-actions" :class="{ 'form-inline': styled }">
-        <div :class="{ 'form-group': styled }">
+    <div class="vqb-group-body" :class="{ 'card-body': styled }">
+      <div class="rule-actions" :class="{ '': styled }">
+        <div :class="{ 'form-row': styled }">
+          <div class="col-12 col-md-4 col-lg-4 col-sm-12 col-xs-12">
           <select v-model="selectedRule" :class="{ 'form-control': styled }">
             <option v-for="(rule, index) in rules" :key="index" :value="rule">{{ rule.label }}</option>
           </select>
-
-          <button @click="addRule" :class="{ 'btn btn-default': styled }" v-html="labels.addRule"></button>
-          <button :class="{ 'btn btn-default': styled }" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"></button>
+          </div>
+          <div class="col-12  col-md-8 col-lg-8 col-sm-12 col-xs-12">
+          <button @click="addRule" :class="{ 'btn btn-secondary': styled }" v-html="labels.addRule"></button>
+          <button :class="{ 'btn btn-secondary': styled }" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"></button>
+          </div>
         </div>
       </div>
 
@@ -127,7 +130,7 @@ export default {
   computed: {
     classObject () {
       var classObject = {
-        'panel panel-default': this.styled,
+        'card card': this.styled,
       }
 
       classObject['depth-' + this.depth.toString()] = this.styled;

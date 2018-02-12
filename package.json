@@ -6,8 +6,8 @@
   "main": "./dist/vue-query-builder.js",
   "scripts": {
     "test": "karma start ./test/karma.conf.js",
-    "dev": "webpack-dev-server --inline --hot --config ./build/dev.js --port 8080",
-    "build": "NODE_ENV=production webpack --progress --hide-modules --config ./build/prod.js && npm run build:demo",
+    "dev": "webpack-dev-server --inline --hot --config ./build/dev.js --port 8222",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/prod.js && npm run build:demo",
     "build:demo": "NODE_ENV=production webpack --progress --hide-modules --config ./build/dev.js"
   },
   "license": "MIT",
@@ -16,7 +16,9 @@
     "url": "git+https://github.com/dabernathy89/vue-query-builder.git"
   },
   "dependencies": {
-    "vue": "^2.0.1"
+    "pikaday": "^1.7.0",
+    "vue": "^2.0.1",
+    "vue-select": "^2.4.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
