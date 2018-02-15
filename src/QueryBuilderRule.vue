@@ -33,7 +33,7 @@
           <input type="radio" :value="choice.value" v-model="query.value"> {{ choice.label }}
         </label>
       </div>
-    </div>
+    
       <select
         v-if="rule.inputType === 'select'"
         :class="{ 'form-control': styled }"
@@ -41,7 +41,7 @@
         v-model="query.value">
         <option v-for="choice in rule.choices" :value="choice.value">{{ choice.label }}</option>
       </select>
-
+</div>
       <span class="ml-auto"><button :class="{ 'close float-right': styled }" @click="remove" v-html="labels.removeRule"></button></span>
     </div>
   </div>
