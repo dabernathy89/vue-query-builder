@@ -183,7 +183,6 @@ export default {
     opacity: 1;
     color: rgb(150,150,150);
   }
-
   @media (min-width: 768px) {
     .vue-query-builder-styled .vqb-rule.form-inline .form-group {
       display: block;

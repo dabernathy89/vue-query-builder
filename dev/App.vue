@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div id="app">
-      <h1 class="title">Vue Query Builder Demo</h1>
-      <a class="btn btn-default github-link" href="https://github.com/dabernathy89/vue-query-builder">Source on GitHub</a>
+      <h1 class="title">Vue Query Builder Demo - Boostrap 4</h1>
+      <a class="btn btn-default github-link" href="https://github.com/kailashrdave/vue-query-builder">Source on GitHub</a>
 
       <hr>
 
@@ -54,8 +54,8 @@
         },
         query: null,
         labels: {
-          removeRule: "<span class='glyphicon glyphicon-remove'></span>",
-          removeGroup: "<span class='glyphicon glyphicon-remove'></span>",
+          removeRule: "&times;",
+          removeGroup: "&times;",
         },
         rules: [
           {
