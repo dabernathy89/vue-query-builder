@@ -3,7 +3,7 @@
     <div class="vqb-group-heading" :class="{ 'card-header': styled }">
       <div class="match-type-container" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
-          <label for="vqb-match-type">{{ labels.matchType }}</label>
+          <label for="vqb-match-type" class="mr-2">{{ labels.matchType }}</label>
           <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
             <option>{{ labels.matchTypeAll }}</option>
             <option>{{ labels.matchTypeAny }}</option>
