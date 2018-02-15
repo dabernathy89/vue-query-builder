@@ -2,17 +2,19 @@
   <div class="vqb-rule" :class="{ 'card ': styled }">
     <div :class="{ 'form-inline': styled }">
       <label>{{ rule.label }}</label>
-
+      <div>
       <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }">
         <option v-for="operand in rule.operands">{{ operand }}</option>
       </select>
-
+      </div>
+     <div>
       <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control': styled }">
         <option v-for="operator in rule.operators" v-bind:value="operator">
           {{ operator }}
         </option>
       </select>
-
+      </div>
+      <div class="ml-1">
       <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
       <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value"></input>
 
@@ -31,7 +33,7 @@
           <input type="radio" :value="choice.value" v-model="query.value"> {{ choice.label }}
         </label>
       </div>
-
+    </div>
       <select
         v-if="rule.inputType === 'select'"
         :class="{ 'form-control': styled }"
