@@ -13,10 +13,10 @@
         </option>
       </select>
 
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text' && !hideInput" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
+      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
       <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value"></input>
 
-      <template v-if="isCustomComponent && !hideInput">
+      <template v-if="isCustomComponent">
         <component :value="query.value" @input="updateQuery" :is="rule.component"></component>
       </template>
 
@@ -33,23 +33,21 @@
       </div>
 
       <select
-        v-if="rule.inputType === 'select' && hasGroups"
+        v-if="rule.inputType === 'select'"
         :class="{ 'form-control': styled }"
         v-model="query.value">
-        <optgroup v-for="(group, name) in optionGroups" :label="name">
-          <option v-for="choice in group" :value="choice.value">{{ choice.label }}</option>
-        </optgroup>
+
+        <template v-for="(option, option_key) in selectOptions">
+          <option v-if="!Array.isArray(option)" :value="option.value">
+            {{ option.label }}
+          </option>
+          <optgroup v-if="Array.isArray(option)" :label="option_key">
+            <option v-for="sub_option in option" :value="sub_option.value">{{ sub_option.label }}</option>
+          </optgroup>
+        </template>
+
       </select>
 
-      <select
-        v-if="rule.inputType === 'select' && !hasGroups"
-        :class="{ 'form-control': styled }"
-        :multiple="rule.type === 'multi-select'"
-        v-model="query.value">
-        <option v-for="choice in rule.choices" :value="choice.value">{{ choice.label }}</option>
-      </select>
-
-      <h5 v-if="total > 0" class="pull-right"> {{total}} </h5>
       <button :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
     </div>
   </div>
@@ -61,7 +59,7 @@ import deepClone from './utilities.js';
 export default {
   name: "query-builder-rule",
 
-  props: ['query', 'index', 'rule', 'styled', 'labels', 'total'],
+  props: ['query', 'index', 'rule', 'styled', 'labels'],
 
   beforeMount () {
     if (this.rule.type === 'custom-component') {
@@ -89,46 +87,40 @@ export default {
       return this.rule.type === 'custom-component';
     },
 
-    hasGroups () {
-      return this.rule.choices[0].group !== null;
-    },
-
-    optionGroups () {
-      if(this.hasGroups){
-        var groups = this.rule.choices.reduce(function(groups, item) {
-        var val = item['group'];
-        groups[val] = groups[val] || [];
-        groups[val].push(item);
-        return groups;
-        }, {});
-
-        return groups;
+    selectOptions () {
+      if (typeof this.rule.choices === 'undefined') {
+        return {};
       }
-    },
 
-    hideInput () {
-      return this.query.selectedOperator == 'is null' || this.query.selectedOperator == 'is empty';      
-    }     
+      return this.rule.choices.reduce(function(groups, item, index) {
+        let key = item['group'];
+        if (typeof key !== 'undefined') {
+          groups[key] = groups[key] || [];
+          groups[key].push(item);
+        } else {
+          groups[index] = item;
+        }
+
+        return groups;
+      }, {});
+    },
   },
 
   mounted () {
     let updated_query = deepClone(this.query);
-    if (this.rule.inputType === 'checkbox') {
-      if(this.query.value === null){
-        updated_query.value = [];
+
+    // Set a default value for these types if one isn't provided already (via initialQuery on root builder)
+    if(this.query.value === null){
+      if (this.rule.inputType === 'checkbox') {
+          updated_query.value = [];
       }
-      this.$emit('update:query', updated_query);
-    }
-    if (this.rule.type === 'select') {
-      if(this.query.value === null){
-        updated_query.value = this.rule.choices[0].value;
+      if (this.rule.type === 'select') {
+          updated_query.value = this.rule.choices[0].value;
       }
-      this.$emit('update:query', updated_query);
-    }
-    if (this.rule.type === 'custom-component') {
-      if(this.query.value === null){
-        updated_query.value = this.rule.default || null;
+      if (this.rule.type === 'custom-component') {
+          updated_query.value = this.rule.default || null;
       }
+
       this.$emit('update:query', updated_query);
     }
   }

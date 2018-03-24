@@ -17,13 +17,8 @@
       <div class="rule-actions" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
 
-          <select v-if="!hasGroups" v-model="selectedRule" :class="{ 'form-control': styled }">
+          <select v-model="selectedRule" :class="{ 'form-control': styled }">
             <option v-for="(rule, index) in rules" :key="index" :value="rule">{{ rule.label }}</option>
-          </select>
-          <select v-if="hasGroups" v-model="selectedRule" :class="{ 'form-control': styled }">
-            <optgroup v-for="(group, name) in optionGroups" :label="name">
-              <option v-for="options in group" :key="index" :value="options">{{ options.label }}</option>
-            </optgroup>
           </select>
 
           <button @click="addRule" :class="{ 'btn btn-default': styled }" v-html="labels.addRule"></button>
@@ -139,23 +134,6 @@ export default {
       classObject['depth-' + this.depth.toString()] = this.styled;
 
       return classObject;
-    },
-    
-    hasGroups () {
-      return this.rules[0].group !== null;
-    },
-
-    optionGroups () {
-      if(this.hasGroups){
-        var groups = this.rules.reduce(function(groups, item) {
-        var val = item['group'];
-        groups[val] = groups[val] || [];
-        groups[val].push(item);
-        return groups;
-        }, {});
-
-        return groups;
-      }
     }
   }
 }

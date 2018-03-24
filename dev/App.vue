@@ -50,6 +50,13 @@
                 "value": "John"
               }
             },
+            {
+              "type": "query-builder-rule",
+              "query": {
+                "rule": "a-select-field-with-groups",
+                "value": "val2"
+              }
+            },
           ]
         },
         query: null,
@@ -102,6 +109,18 @@
               {label: "Val 1", value: "val1"},
               {label: "Val 2", value: "val2"},
               {label: "Val 3", value: "val3"}
+            ]
+          },
+          {
+            type: "select",
+            id: "a-select-field-with-groups",
+            label: "A Select Field With Groups",
+            choices: [
+              {label: "Select...", value: ''},
+              {group: "Group 1", label: "Val 1", value: "val1"},
+              {group: "Group 2", label: "Val 2", value: "val2"},
+              {group: "Group 3", label: "Val 3", value: "val3"},
+              {label: "Val 4", value: "val4"}
             ]
           },
           {
