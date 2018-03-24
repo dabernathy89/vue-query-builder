@@ -35,6 +35,7 @@
       <select
         v-if="rule.inputType === 'select'"
         :class="{ 'form-control': styled }"
+        :multiple="rule.type === 'multi-select'"
         v-model="query.value">
 
         <template v-for="(option, option_key) in selectOptions">
@@ -75,7 +76,7 @@ export default {
       let updated_query = deepClone(this.query);
       updated_query.value = value;
       this.$emit('update:query', updated_query);
-    },  
+    },
   },
 
   computed: {
