@@ -81,7 +81,7 @@ export default {
 
   computed: {
     isMultipleChoice () {
-      return ['radio', 'checkbox', 'select'].indexOf(this.rule.inputType) >= 0;
+      return ['checkbox', 'multi-select'].indexOf(this.rule.inputType) >= 0;
     },
 
     isCustomComponent () {
