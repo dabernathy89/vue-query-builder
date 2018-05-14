@@ -66,7 +66,7 @@ export default {
       },
       ruleTypes: {
         "text": {
-          operators: ['equals','contains','does not contain','is empty','is not empty','begins with','ends with'],
+          operators: ['equals','does not equals','contains','does not contain','is empty','is not empty','begins with','ends with'],
           inputType: "text",
           id: "text-field"
         },
