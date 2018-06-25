@@ -130,12 +130,12 @@ export default {
   },
 
   mounted () {
-    this.$emit('queryUpdated', deepClone(this.query) );
+    this.$emit('query-updated', deepClone(this.query) );
 
     this.$watch(
       'query',
       function( newQuery ){
-        this.$emit('queryUpdated', deepClone(newQuery) );
+        this.$emit('query-updated', deepClone(newQuery) );
       }, {
       deep: true
     });
