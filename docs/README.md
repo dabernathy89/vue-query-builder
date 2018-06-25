@@ -13,7 +13,7 @@ Each instance of Vue Query Builder consists of groups and rules. Groups can cont
 
 <br>
 
-<vue-query-builder :rules="rules" :initialQuery="initialQuery" @queryUpdated="updateQuery"></vue-query-builder>
+<vue-query-builder :rules="rules" :initialQuery="initialQuery" @query-updated="updateQuery"></vue-query-builder>
 
 ## Demo output
 
@@ -24,7 +24,7 @@ Each instance of Vue Query Builder consists of groups and rules. Groups can cont
 ## Demo source
 
 ```html
-<vue-query-builder :rules="rules" :initialQuery="initialQuery" @queryUpdated="updateQuery"></vue-query-builder>
+<vue-query-builder :rules="rules" :initialQuery="initialQuery" @query-updated="updateQuery"></vue-query-builder>
 ```
 
 ```js

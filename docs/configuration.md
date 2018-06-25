@@ -15,7 +15,7 @@ These are all of the props and events that can be defined on the Vue Query Build
   :labels="labels"
   :initialQuery="initialQuery"
   :styled="styled"
-  @queryUpdated="queryUpdated"
+  @query-updated="query-updated"
   ></vue-query-builder>
 ```
 
@@ -138,7 +138,7 @@ Replace the default labels used in the UI. The default values are:
 
 ### initialQuery <Badge text="optional" type="warn" vertical="middle" /> <Badge text="Type: Object" vertical="middle" />
 
-If you want the component to have some initial state, you can pass it in here. This should match the format provided by the `@queryUpdated` event. Example:
+If you want the component to have some initial state, you can pass it in here. This should match the format provided by the `@query-updated` event. Example:
 
 ```json
 {
