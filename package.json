@@ -1,7 +1,7 @@
 {
   "name": "vue-query-builder",
   "version": "0.4.1",
-  "private": true,
+  "main": "./dist/VueQueryBuilder.common.js",
   "scripts": {
     "serve": "vue-cli-service serve --name VueQueryBuilder src/main.js",
     "build": "vue-cli-service build --target lib --name VueQueryBuilder src/VueQueryBuilder.vue",
