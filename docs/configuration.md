@@ -188,6 +188,6 @@ If you want the component to have some initial state, you can pass it in here. T
 
 When true, the component will include Bootstrap 3 CSS classes and some basic styling.
 
-### updateQuery (event) <Badge text="optional" type="warn" vertical="middle" />
+### query-updated (event) <Badge text="optional" type="warn" vertical="middle" />
 
 Use this event to retrieve the Vue Query Builder data when it is updated.
