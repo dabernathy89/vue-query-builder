@@ -19,4 +19,4 @@ const deepClone = function (obj) {
   }
 }
 
-module.exports = deepClone
+export default deepClone;

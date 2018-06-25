@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import QueryBuilderGroup from './QueryBuilderGroup.vue';
+import QueryBuilderGroup from './components/QueryBuilderGroup.vue';
 import deepClone from './utilities.js';
 
 var defaultLabels = {

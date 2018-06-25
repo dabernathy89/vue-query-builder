@@ -1,47 +1,40 @@
 {
   "name": "vue-query-builder",
-  "description": "Vue Query Builder",
-  "author": "Daniel Abernathy <daniel@danielabernathy.com>",
   "version": "0.4.1",
-  "main": "./dist/vue-query-builder.js",
+  "private": true,
   "scripts": {
-    "test": "karma start ./test/karma.conf.js",
-    "dev": "webpack-dev-server --inline --hot --config ./build/dev.js --port 8080",
-    "build": "NODE_ENV=production webpack --progress --hide-modules --config ./build/prod.js && npm run build:demo",
-    "build:demo": "NODE_ENV=production webpack --progress --hide-modules --config ./build/dev.js"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dabernathy89/vue-query-builder.git"
+    "serve": "vue-cli-service serve --name VueQueryBuilder src/main.js",
+    "build": "vue-cli-service build --target lib --name VueQueryBuilder src/VueQueryBuilder.vue",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
-    "vue": "^2.0.1"
+    "vue": "^2.5.16"
   },
   "devDependencies": {
-    "autoprefixer-loader": "^3.2.0",
-    "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
-    "babel-plugin-transform-runtime": "^6.0.0",
-    "babel-preset-es2015": "^6.0.0",
-    "babel-preset-stage-2": "^6.0.0",
-    "cross-env": "^1.0.6",
-    "css-loader": "^0.23.0",
-    "file-loader": "^0.8.4",
-    "json-loader": "^0.5.4",
-    "karma": "^1.3.0",
-    "karma-mocha": "^1.1.1",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "karma-spec-reporter": "0.0.26",
-    "karma-webpack": "^1.8.0",
-    "mocha": "^3.0.2",
-    "phantomjs": "^2.1.7",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "vue-loader": "^13.0.4",
-    "vue-style-loader": "^1.0.0",
-    "vue-template-compiler": "^2.4.2",
-    "webpack": "^2.7.0",
-    "webpack-dev-server": "^2.7.1"
-  }
+    "@vue/cli-plugin-babel": "^3.0.0-beta.15",
+    "@vue/cli-plugin-e2e-cypress": "^3.0.0-beta.15",
+    "@vue/cli-plugin-eslint": "^3.0.0-beta.15",
+    "@vue/cli-plugin-unit-jest": "^3.0.0-beta.15",
+    "@vue/cli-service": "^3.0.0-beta.15",
+    "@vue/eslint-config-standard": "^3.0.0-rc.3",
+    "@vue/test-utils": "^1.0.0-beta.16",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.16",
+    "vuepress": "^0.10.2",
+    "bootstrap": "^3.3.7"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
