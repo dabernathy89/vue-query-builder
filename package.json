@@ -36,5 +36,11 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
+  ],
+  "files": [
+    "dist/",
+    "src/",
+    "LICENSE",
+    "README.md"
   ]
 }
