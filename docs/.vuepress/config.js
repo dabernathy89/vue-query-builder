@@ -16,6 +16,7 @@ module.exports = {
 
         sidebar: [
             ['/', 'Introduction'],
+            ['/demos', 'Demos'],
             ['/getting-started', 'Getting Started'],
             ['/configuration', 'Configuration'],
             ['/roadmap', 'Roadmap'],
