@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import QueryBuilderGroup from './components/QueryBuilderGroup.vue';
-import deepClone from './utilities.js';
+import QueryBuilderGroup from "./components/QueryBuilderGroup.vue";
+import deepClone from "./utilities.js";
 
 var defaultLabels = {
   matchType: "Match Type",
@@ -26,10 +26,11 @@ var defaultLabels = {
   removeRule: "&times;",
   addGroup: "Add Group",
   removeGroup: "&times;",
-  textInputPlaceholder: "value",
+  textInputPlaceholder: "value"
 };
 
 export default {
+  name: "vue-query-builder",
 
   components: {
     QueryBuilderGroup
@@ -39,7 +40,7 @@ export default {
     rules: Array,
     labels: {
       type: Object,
-      default () {
+      default() {
         return defaultLabels;
       }
     },
@@ -50,14 +51,14 @@ export default {
     maxDepth: {
       type: Number,
       default: 3,
-      validator: function (value) {
-        return value >= 1
+      validator: function(value) {
+        return value >= 1;
       }
     },
     initialQuery: Object
   },
 
-  data () {
+  data() {
     return {
       depth: 1,
       query: {
@@ -65,63 +66,72 @@ export default {
         children: []
       },
       ruleTypes: {
-        "text": {
-          operators: ['equals','does not equal','contains','does not contain','is empty','is not empty','begins with','ends with'],
+        text: {
+          operators: [
+            "equals",
+            "does not equal",
+            "contains",
+            "does not contain",
+            "is empty",
+            "is not empty",
+            "begins with",
+            "ends with"
+          ],
           inputType: "text",
           id: "text-field"
         },
-        "numeric": {
-          operators: ['=','<>','<','<=','>','>='],
+        numeric: {
+          operators: ["=", "<>", "<", "<=", ">", ">="],
           inputType: "number",
           id: "number-field"
         },
-        "custom": {
+        custom: {
           operators: [],
           inputType: "text",
           id: "custom-field"
         },
-        "radio": {
+        radio: {
           operators: [],
           choices: [],
           inputType: "radio",
           id: "radio-field"
         },
-        "checkbox": {
+        checkbox: {
           operators: [],
           choices: [],
           inputType: "checkbox",
           id: "checkbox-field"
         },
-        "select": {
-          operators: ['=','<>'],
+        select: {
+          operators: ["=", "<>"],
           choices: [],
           inputType: "select",
           id: "select-field"
         },
         "multi-select": {
-          operators: ['='],
+          operators: ["="],
           choices: [],
           inputType: "select",
           id: "multi-select-field"
-        },
+        }
       }
-    }
+    };
   },
 
   computed: {
-    mergedLabels () {
+    mergedLabels() {
       return Object.assign({}, defaultLabels, this.labels);
     },
 
-    mergedRules () {
+    mergedRules() {
       var mergedRules = [];
       var vm = this;
 
-      vm.rules.forEach(function(rule){
-        if ( typeof vm.ruleTypes[rule.type] !== "undefined" ) {
-          mergedRules.push( Object.assign({}, vm.ruleTypes[rule.type], rule) );
+      vm.rules.forEach(function(rule) {
+        if (typeof vm.ruleTypes[rule.type] !== "undefined") {
+          mergedRules.push(Object.assign({}, vm.ruleTypes[rule.type], rule));
         } else {
-          mergedRules.push( rule );
+          mergedRules.push(rule);
         }
       });
 
@@ -129,64 +139,66 @@ export default {
     }
   },
 
-  mounted () {
-    this.$emit('query-updated', deepClone(this.query) );
+  mounted() {
+    this.$emit("query-updated", deepClone(this.query));
 
     this.$watch(
-      'query',
-      function( newQuery ){
-        this.$emit('query-updated', deepClone(newQuery) );
-      }, {
-      deep: true
-    });
+      "query",
+      function(newQuery) {
+        this.$emit("query-updated", deepClone(newQuery));
+      },
+      {
+        deep: true
+      }
+    );
 
-    if ( typeof this.$options.propsData.initialQuery !== "undefined" ) {
+    if (typeof this.$options.propsData.initialQuery !== "undefined") {
       this.query = deepClone(this.$options.propsData.initialQuery);
     }
   }
-}
+};
 </script>
 
 <style>
-  .vue-query-builder-styled .vqb-group .rule-actions {
-    margin-bottom: 20px;
-  }
+.vue-query-builder-styled .vqb-group .rule-actions {
+  margin-bottom: 20px;
+}
 
-  .vue-query-builder-styled .vqb-rule {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    background-color: #f5f5f5;
-    border-color: #ddd;
-    padding: 15px;
-  }
+.vue-query-builder-styled .vqb-rule {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  padding: 15px;
+}
 
-  .vue-query-builder-styled .vqb-rule label {
-    margin-right: 10px;
-  }
+.vue-query-builder-styled .vqb-rule label {
+  margin-right: 10px;
+}
 
-  .vue-query-builder-styled .vqb-group.depth-1 .vqb-rule,
-  .vue-query-builder-styled .vqb-group.depth-2 {
-    border-left: 2px solid #8bc34a;
-  }
+.vue-query-builder-styled .vqb-group.depth-1 .vqb-rule,
+.vue-query-builder-styled .vqb-group.depth-2 {
+  border-left: 2px solid #8bc34a;
+}
 
-  .vue-query-builder-styled .vqb-group.depth-2 .vqb-rule,
-  .vue-query-builder-styled .vqb-group.depth-3 {
-    border-left: 2px solid #00bcd4;
-  }
+.vue-query-builder-styled .vqb-group.depth-2 .vqb-rule,
+.vue-query-builder-styled .vqb-group.depth-3 {
+  border-left: 2px solid #00bcd4;
+}
 
-  .vue-query-builder-styled .vqb-group.depth-3 .vqb-rule,
-  .vue-query-builder-styled .vqb-group.depth-4 {
-    border-left: 2px solid #ff5722;
-  }
+.vue-query-builder-styled .vqb-group.depth-3 .vqb-rule,
+.vue-query-builder-styled .vqb-group.depth-4 {
+  border-left: 2px solid #ff5722;
+}
 
-  .vue-query-builder-styled .close {
-    opacity: 1;
-    color: rgb(150,150,150);
-  }
+.vue-query-builder-styled .close {
+  opacity: 1;
+  color: rgb(150, 150, 150);
+}
 
-  @media (min-width: 768px) {
-    .vue-query-builder-styled .vqb-rule.form-inline .form-group {
-      display: block;
-    }
+@media (min-width: 768px) {
+  .vue-query-builder-styled .vqb-rule.form-inline .form-group {
+    display: block;
   }
+}
 </style>
