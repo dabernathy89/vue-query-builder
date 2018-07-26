@@ -110,7 +110,7 @@ export default {
   mounted () {
     let updated_query = deepClone(this.query);
 
-    // Set a default value for these types if one isn't provided already (via initialQuery on root builder)
+    // Set a default value for these types if one isn't provided already
     if(this.query.value === null){
       if (this.rule.inputType === 'checkbox') {
           updated_query.value = [];

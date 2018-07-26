@@ -54,7 +54,7 @@ export default {
         return value >= 1
       }
     },
-    initialQuery: Object
+    value: Object
   },
 
   data () {
@@ -130,18 +130,16 @@ export default {
   },
 
   mounted () {
-    this.$emit('query-updated', deepClone(this.query) );
-
     this.$watch(
       'query',
-      function( newQuery ){
-        this.$emit('query-updated', deepClone(newQuery) );
+      newQuery => {
+        this.$emit('input', deepClone(newQuery));
       }, {
       deep: true
     });
 
-    if ( typeof this.$options.propsData.initialQuery !== "undefined" ) {
-      this.query = deepClone(this.$options.propsData.initialQuery);
+    if ( typeof this.$options.propsData.value !== "undefined" ) {
+      this.query = Object.assign(this.query, this.$options.propsData.value);
     }
   }
 }

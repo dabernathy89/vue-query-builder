@@ -47,7 +47,7 @@ new Vue({
 
   data: {
     rules: rules,
-    output: null,
+    output: {},
   },
 
   methods: {
