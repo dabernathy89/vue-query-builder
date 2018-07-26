@@ -30,6 +30,7 @@ var defaultLabels = {
 };
 
 export default {
+  name: 'vue-query-builder',
 
   components: {
     QueryBuilderGroup
