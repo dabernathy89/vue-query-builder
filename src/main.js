@@ -13,6 +13,7 @@ let rules = [
       type: "text",
       id: "last-name",
       label: "Last Name",
+      operands: ['Home Address','Work Address']
     },
     {
       type: "radio",

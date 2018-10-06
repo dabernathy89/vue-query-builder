@@ -1,55 +1,72 @@
 <template>
   <div class="vqb-rule" :class="{ 'panel panel-default form-inline': styled }">
     <div :class="{ 'form-group': styled }">
-      <label>{{ rule.label }}</label>
+      <slot name="ruleLabel" v-bind:rule="rule">
+        <label>{{ rule.label }}</label>
+      </slot>
 
-      <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }">
-        <option v-for="operand in rule.operands">{{ operand }}</option>
-      </select>
+      <slot v-if="typeof rule.operands !== 'undefined'" name="operand" v-bind:rule="rule" v-bind:query="query">
+        <select v-model="query.selectedOperand" :class="{ 'form-control': styled }">
+          <option v-for="operand in rule.operands" v-bind:value="operand">{{ operand }}</option>
+        </select>
+      </slot>
 
-      <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control': styled }">
-        <option v-for="operator in rule.operators" v-bind:value="operator">
-          {{ operator }}
-        </option>
-      </select>
+      <slot v-if="rule.operators.length" name="operator" v-bind:rule="rule" v-bind:query="query">
+        <select v-model="query.selectedOperator" :class="{ 'form-control': styled }">
+          <option v-for="operator in rule.operators" v-bind:value="operator">
+            {{ operator }}
+          </option>
+        </select>
+      </slot>
 
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder">
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value">
+      <slot v-if="rule.inputType === 'text'" name="text" v-bind:rule="rule" v-bind:query="query">
+        <input :class="{ 'form-control': styled }" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder">
+      </slot>
+
+      <slot v-if="rule.inputType === 'number'" name="text" v-bind:rule="rule" v-bind:query="query">
+        <input :class="{ 'form-control': styled }" type="number" v-model="query.value">
+      </slot>
 
       <template v-if="isCustomComponent">
         <component :value="query.value" @input="updateQuery" :is="rule.component"></component>
       </template>
 
-      <div class="checkbox" v-if="rule.inputType === 'checkbox'">
-        <label v-for="choice in rule.choices">
-          <input type="checkbox" :value="choice.value" v-model="query.value"> {{ choice.label }}
-        </label>
-      </div>
+      <slot v-if="rule.inputType === 'checkbox'" name="radio" v-bind:rule="rule" v-bind:query="query">
+        <div class="checkbox">
+          <label v-for="choice in rule.choices">
+            <input type="checkbox" :value="choice.value" v-model="query.value"> {{ choice.label }}
+          </label>
+        </div>
+      </slot>
 
-      <div class="radio" v-if="rule.inputType === 'radio'">
-        <label v-for="choice in rule.choices">
-          <input type="radio" :value="choice.value" v-model="query.value"> {{ choice.label }}
-        </label>
-      </div>
+      <slot v-if="rule.inputType === 'radio'" name="radio" v-bind:rule="rule" v-bind:query="query">
+        <div class="radio">
+          <label v-for="choice in rule.choices">
+            <input type="radio" :value="choice.value" v-model="query.value"> {{ choice.label }}
+          </label>
+        </div>
+      </slot>
 
-      <select
-        v-if="rule.inputType === 'select'"
-        :class="{ 'form-control': styled }"
-        :multiple="rule.type === 'multi-select'"
-        v-model="query.value">
+      <slot v-if="rule.inputType === 'select'" name="select" v-bind:rule="rule" v-bind:query="query" v-bind:selectOptions="selectOptions">
+        <select
+          :class="{ 'form-control': styled }"
+          :multiple="rule.type === 'multi-select'"
+          v-model="query.value">
 
-        <template v-for="(option, option_key) in selectOptions">
-          <option v-if="!Array.isArray(option)" :value="option.value">
-            {{ option.label }}
-          </option>
-          <optgroup v-if="Array.isArray(option)" :label="option_key">
-            <option v-for="sub_option in option" :value="sub_option.value">{{ sub_option.label }}</option>
-          </optgroup>
-        </template>
+          <template v-for="(option, option_key) in selectOptions">
+            <option v-if="!Array.isArray(option)" :value="option.value">
+              {{ option.label }}
+            </option>
+            <optgroup v-if="Array.isArray(option)" :label="option_key">
+              <option v-for="sub_option in option" :value="sub_option.value">{{ sub_option.label }}</option>
+            </optgroup>
+          </template>
+        </select>
+      </slot>
 
-      </select>
-
-      <button type="button" :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
+      <slot name="removeButton" v-bind:remove="remove">
+        <button type="button" :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
+      </slot>
     </div>
   </div>
 </template>

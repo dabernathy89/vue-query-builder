@@ -3,7 +3,7 @@
   "version": "0.6.1",
   "main": "./dist/VueQueryBuilder.common.js",
   "scripts": {
-    "serve": "vue-cli-service serve --name VueQueryBuilder src/main.js",
+    "serve": "vue-cli-service serve --name VueQueryBuilder src/main.js --open",
     "build": "vue-cli-service build --target lib --name VueQueryBuilder src/VueQueryBuilder.vue",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",

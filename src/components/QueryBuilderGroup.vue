@@ -42,6 +42,18 @@
           :styled="styled"
           :labels="labels"
           v-on:child-deletion-requested="removeChild">
+            <template
+              v-for="(slot, slot_name) in $slots"
+              :slot="slot_name">
+                <slot :name="slot_name"></slot>
+            </template>
+
+            <template
+              v-for="(slot, slot_name) in $scopedSlots"
+              :slot="slot_name"
+              slot-scope="props">
+                <slot :name="slot_name" v-bind="props"></slot>
+            </template>
         </component>
       </div>
     </div>
