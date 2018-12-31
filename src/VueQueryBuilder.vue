@@ -62,7 +62,7 @@ export default {
     return {
       depth: 1,
       query: {
-        logicalOperator: "All",
+        logicalOperator: this.labels.matchTypeAll,
         children: []
       },
       ruleTypes: {

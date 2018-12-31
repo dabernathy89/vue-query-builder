@@ -100,7 +100,7 @@ export default {
         updated_query.children.push({
           type: 'query-builder-group',
           query: {
-            logicalOperator: "All",
+            logicalOperator: this.labels.matchTypeAll,
             children: []
           }
         });
