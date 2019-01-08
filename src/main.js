@@ -27,7 +27,7 @@ let rules = [
       type: "text",
       id: "date-type",
       inputType:"date",
-      label: "Data"
+      label: "Date"
     },
     {
       type: "select",
