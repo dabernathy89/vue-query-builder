@@ -24,6 +24,12 @@ let rules = [
       ]
     },
     {
+      type: "text",
+      id: "date-type",
+      inputType:"date",
+      label: "Date"
+    },
+    {
       type: "select",
       id: 'select',
       label: 'Color',
