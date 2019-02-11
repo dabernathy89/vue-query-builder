@@ -136,7 +136,19 @@ export default {
     this.$watch(
       'query',
       newQuery => {
-        this.$emit('input', deepClone(newQuery));
+        if (JSON.stringify(newQuery) !== JSON.stringify(this.value)) {
+          this.$emit('input', deepClone(newQuery));
+        }
+      }, {
+      deep: true
+    });
+
+    this.$watch(
+      'value',
+      newValue => {
+        if (JSON.stringify(newValue) !== JSON.stringify(this.query)) {
+          this.query = deepClone(newValue);
+        }
       }, {
       deep: true
     });
