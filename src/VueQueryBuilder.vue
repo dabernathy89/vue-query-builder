@@ -30,6 +30,7 @@ var defaultLabels = {
 };
 
 export default {
+  name: 'vue-query-builder',
 
   components: {
     QueryBuilderGroup
@@ -54,7 +55,7 @@ export default {
         return value >= 1
       }
     },
-    initialQuery: Object
+    value: Object
   },
 
   data () {
@@ -66,7 +67,7 @@ export default {
       },
       ruleTypes: {
         "text": {
-          operators: ['equals','contains','does not contain','is empty','is not empty','begins with','ends with'],
+          operators: ['equals','does not equal','contains','does not contain','is empty','is not empty','begins with','ends with'],
           inputType: "text",
           id: "text-field"
         },
@@ -130,18 +131,16 @@ export default {
   },
 
   mounted () {
-    this.$emit('queryUpdated', deepClone(this.query) );
-
     this.$watch(
       'query',
-      function( newQuery ){
-        this.$emit('queryUpdated', deepClone(newQuery) );
+      newQuery => {
+        this.$emit('input', deepClone(newQuery));
       }, {
       deep: true
     });
 
-    if ( typeof this.$options.propsData.initialQuery !== "undefined" ) {
-      this.query = deepClone(this.$options.propsData.initialQuery);
+    if ( typeof this.$options.propsData.value !== "undefined" ) {
+      this.query = Object.assign(this.query, this.$options.propsData.value);
     }
   }
 }

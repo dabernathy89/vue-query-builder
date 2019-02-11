@@ -13,9 +13,8 @@ These are all of the props and events that can be defined on the Vue Query Build
   :rules="rules"
   :maxDepth="3"
   :labels="labels"
-  :initialQuery="initialQuery"
   :styled="styled"
-  @queryUpdated="queryUpdated"
+  v-model="query"
   ></vue-query-builder>
 ```
 
@@ -136,50 +135,23 @@ Replace the default labels used in the UI. The default values are:
 
 ---
 
-### initialQuery <Badge text="optional" type="warn" vertical="middle" /> <Badge text="Type: Object" vertical="middle" />
+### v-model <Badge text="optional" type="warn" vertical="middle" /> <Badge text="Type: Object" vertical="middle" />
 
-If you want the component to have some initial state, you can pass it in here. This should match the format provided by the `@queryUpdated` event. Example:
+Provide a value to the `v-model` attribute to give some initial state to the query builder, and to automatically get the updated value of the query as it changes. If you don't want to provide initial state, you can just pass an empty object:
 
-```json
-{
-  "logicalOperator": "All",
-  "children": [
-    {
-      "type": "query-builder-rule",
-      "query": {
-        "rule": "plan-type",
-        "selectedOperand": "Plan Type",
-        "value": "premium"
-      }
-    },
-    {
-      "type": "query-builder-group",
-      "query": {
-        "logicalOperator": "Any",
-        "children": [
-          {
-            "type": "query-builder-rule",
-            "query": {
-              "rule": "first-name",
-              "selectedOperator": "equals",
-              "selectedOperand": "First Name",
-              "value": "John"
-            }
-          },
-          {
-            "type": "query-builder-rule",
-            "query": {
-              "rule": "first-name",
-              "selectedOperator": "equals",
-              "selectedOperand": "First Name",
-              "value": "Sally"
-            }
-          }
-        ]
-      }
+```html
+<vue-query-builder
+  v-model="query"
+  ></vue-query-builder>
+```
+
+```js
+  // Inside your Vue app / component
+  data() {
+    return {
+      query: {},
     }
-  ]
-}
+  }
 ```
 
 ---
@@ -187,7 +159,3 @@ If you want the component to have some initial state, you can pass it in here. T
 ### styled <Badge text="optional" type="warn" vertical="middle" /> <Badge text="Type: Boolean" vertical="middle" /> <Badge text="Default: true" vertical="middle" />
 
 When true, the component will include Bootstrap 3 CSS classes and some basic styling.
-
-### updateQuery (event) <Badge text="optional" type="warn" vertical="middle" />
-
-Use this event to retrieve the Vue Query Builder data when it is updated.

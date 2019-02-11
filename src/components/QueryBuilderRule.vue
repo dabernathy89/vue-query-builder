@@ -13,8 +13,8 @@
         </option>
       </select>
 
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder"></input>
-      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value"></input>
+      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'text'" type="text" v-model="query.value" :placeholder="labels.textInputPlaceholder">
+      <input :class="{ 'form-control': styled }" v-if="rule.inputType === 'number'" type="number" v-model="query.value">
 
       <template v-if="isCustomComponent">
         <component :value="query.value" @input="updateQuery" :is="rule.component"></component>
@@ -49,7 +49,7 @@
 
       </select>
 
-      <button :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
+      <button type="button" :class="{ 'close pull-right': styled }" @click="remove" v-html="labels.removeRule"></button>
     </div>
   </div>
 </template>
@@ -110,7 +110,7 @@ export default {
   mounted () {
     let updated_query = deepClone(this.query);
 
-    // Set a default value for these types if one isn't provided already (via initialQuery on root builder)
+    // Set a default value for these types if one isn't provided already
     if(this.query.value === null){
       if (this.rule.inputType === 'checkbox') {
           updated_query.value = [];

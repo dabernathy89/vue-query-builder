@@ -1,6 +1,6 @@
 {
   "name": "vue-query-builder",
-  "version": "0.4.1",
+  "version": "0.6.1",
   "main": "./dist/VueQueryBuilder.common.js",
   "scripts": {
     "serve": "vue-cli-service serve --name VueQueryBuilder src/main.js",
@@ -36,5 +36,11 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
+  ],
+  "files": [
+    "dist/",
+    "src/",
+    "LICENSE",
+    "README.md"
   ]
 }

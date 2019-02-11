@@ -41,11 +41,24 @@ let rules = [
   ];
 
 new Vue({
-    render: createElement => {
-        return createElement(VueQueryBuilder, {
-            props: {
-                rules: rules
-            }
-        });
+  el: '#app',
+
+  components: { VueQueryBuilder },
+
+  data: {
+    rules: rules,
+    output: {},
+  },
+
+  methods: {
+    updateQuery: function(value){
+      this.output = value;
     }
-}).$mount('#app')
+  },
+
+  computed: {
+    outputFormatted: function() {
+      return JSON.stringify(this.output, null, 2);
+    }
+  },
+});

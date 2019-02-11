@@ -9,7 +9,7 @@
             <option>{{ labels.matchTypeAny }}</option>
           </select>
         </div>
-        <button :class="{ 'close pull-right': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
+        <button type="button" :class="{ 'close pull-right': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
       </div>
     </div>
 
@@ -21,8 +21,8 @@
             <option v-for="(rule, index) in rules" :key="index" :value="rule">{{ rule.label }}</option>
           </select>
 
-          <button @click="addRule" :class="{ 'btn btn-default': styled }" v-html="labels.addRule"></button>
-          <button :class="{ 'btn btn-default': styled }" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"></button>
+          <button type="button" @click="addRule" :class="{ 'btn btn-default': styled }" v-html="labels.addRule"></button>
+          <button type="button" :class="{ 'btn btn-default': styled }" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"></button>
         </div>
       </div>
 
