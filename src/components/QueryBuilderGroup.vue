@@ -5,8 +5,7 @@
         <div :class="{ 'form-group': styled }">
           <label for="vqb-match-type">{{ labels.matchType }}</label>
           <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
-            <option>{{ labels.matchTypeAll }}</option>
-            <option>{{ labels.matchTypeAny }}</option>
+            <option v-for="label in labels.matchTypes" :value="label.id">{{ label.label }}</option>
           </select>
         </div>
         <button type="button" :class="{ 'close pull-right': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
@@ -100,7 +99,7 @@ export default {
         updated_query.children.push({
           type: 'query-builder-group',
           query: {
-            logicalOperator: this.labels.matchTypeAll,
+            logicalOperator: this.labels.matchTypes[0].id,
             children: []
           }
         });

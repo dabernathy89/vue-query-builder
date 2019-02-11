@@ -20,8 +20,10 @@ import deepClone from './utilities.js';
 
 var defaultLabels = {
   matchType: "Match Type",
-  matchTypeAll: "All",
-  matchTypeAny: "Any",
+  matchTypes: [
+    {"id": "all", "label": "All"},
+    {"id": "any", "label": "Any"},
+  ],
   addRule: "Add Rule",
   removeRule: "&times;",
   addGroup: "Add Group",
@@ -62,7 +64,7 @@ export default {
     return {
       depth: 1,
       query: {
-        logicalOperator: this.labels.matchTypeAll,
+        logicalOperator: this.labels.matchTypes[0].id,
         children: []
       },
       ruleTypes: {

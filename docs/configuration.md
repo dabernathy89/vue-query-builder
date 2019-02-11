@@ -123,8 +123,10 @@ Replace the default labels used in the UI. The default values are:
 ```json
 {
   "matchType": "Match Type",
-  "matchTypeAll": "All",
-  "matchTypeAny": "Any",
+  "matchTypes": [
+    {"id": "all", "label": "All"},
+    {"id": "any", "label": "Any"}
+  ],
   "addRule": "Add Rule",
   "removeRule": "&times;",
   "addGroup": "Add Group",
