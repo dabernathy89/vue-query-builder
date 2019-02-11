@@ -11,7 +11,7 @@ npm install vue-query-builder
 If you are not using a bundler like Webpack, or just want to load the component via a `<script>` tag, you can use the Unpkg CDN. Don't forget to load Vue as well!
 
 ```html
-<script src="https://unpkg.com/vue-query-builder@0.5.0/dist/VueQueryBuilder.umd.min.js"></script>
+<script src="https://unpkg.com/vue-query-builder@0.7.1/dist/VueQueryBuilder.umd.min.js"></script>
 ```
 
 ## Usage
