@@ -7,7 +7,7 @@
         <option v-for="operand in rule.operands">{{ operand }}</option>
       </select>
 
-      <select v-if="! isMultipleChoice" v-model="query.selectedOperator" :class="{ 'form-control': styled }">
+      <select v-if="typeof rule.operators !== 'undefined' && rule.operators.length > 1" v-model="query.selectedOperator" :class="{ 'form-control': styled }">
         <option v-for="operator in rule.operators" v-bind:value="operator">
           {{ operator }}
         </option>

@@ -96,7 +96,7 @@ export default {
           id: "checkbox-field"
         },
         "select": {
-          operators: ['=','<>'],
+          operators: [],
           choices: [],
           inputType: "select",
           id: "select-field"
