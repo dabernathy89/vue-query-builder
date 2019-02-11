@@ -32,8 +32,6 @@
           <input type="radio" :value="choice.value" v-model="query.value"> {{ choice.label }}
         </label>
       </div>
-      
-
 
       <select
         v-if="rule.inputType === 'select'"
