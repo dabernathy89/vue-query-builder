@@ -5,7 +5,7 @@
         <div :class="{ 'form-group': styled }">
           <label for="vqb-match-type">{{ labels.matchType }}</label>
           <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
-            <option v-for="label in labels.matchTypes" :value="label.id">{{ label.label }}</option>
+            <option v-for="(label, index) in labels.matchTypes" :key="index" :value="label.id">{{ label.label }}</option>
           </select>
         </div>
         <button type="button" :class="{ 'close pull-right': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
