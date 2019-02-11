@@ -6,7 +6,7 @@ footer: MIT Licensed | Copyright © 2017-present Daniel Abernathy
 
 Vue Query Builder is a user interface that makes it easy for your users to create queries of any kind. It's useful if you need a tool for generating reports, filtering data, and more.
 
-Each instance of Vue Query Builder consists of groups and rules. Groups can contain rules and other groups. Each group has a match type of either "match all" (AND) or "match any" (OR). The component outputs JSON which you can pass to your server to parse.
+Each instance of Vue Query Builder consists of groups and rules. Groups can contain rules and other groups. Each group has, by default, a match type of either "match all" (AND) or "match any" (OR). The component outputs JSON which you can pass to your server to parse.
 
 ### Basic Demo
 
