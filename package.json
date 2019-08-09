@@ -30,7 +30,9 @@
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.5",
-    "vuepress": "^1.0.3"
+    "vuepress": "1.0.2",
+    "@vuepress/core": "1.0.2",
+    "@vuepress/theme-default": "1.0.2"
   },
   "browserslist": [
     "> 1%",
