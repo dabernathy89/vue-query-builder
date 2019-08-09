@@ -40,7 +40,7 @@ export default {
         },
       ],
       query: {
-        "logicalOperator": "All",
+        "logicalOperator": "all",
         "children": [
           {
             "type": "query-builder-rule",
@@ -53,7 +53,7 @@ export default {
           {
             "type": "query-builder-group",
             "query": {
-              "logicalOperator": "Any",
+              "logicalOperator": "any",
               "children": [
                 {
                   "type": "query-builder-rule",
