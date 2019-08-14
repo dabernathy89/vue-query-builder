@@ -105,6 +105,11 @@ Each object in the `rules` array can contain the following properties:
       <td>An imported component</td>
       <td><Badge text="may be equired" type="error" vertical="middle" /> Required for type <code>custom-component</code>. <br><br>Ex: <code>component: RangeInput</code></td>
     </tr>
+    <tr>
+      <td>customComponentProps</td>
+      <td>Object to pass down to a custom component</td>
+      <td><Badge text="may be required" type="error" vertical="middle" /> Required for type <code>custom-component</code>. <br><br>Ex: <code>customComponentProps: {name: 'John'}</code></td>
+    </tr>    
   </tbody>
 </table>
 
