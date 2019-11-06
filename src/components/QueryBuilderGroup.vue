@@ -1,6 +1,6 @@
 <template>
   <div class="vqb-group" :class="classObject">
-    <div class="vqb-group-heading" :class="{ 'panel-heading': styled }">
+    <div class="vqb-group-heading" :class="{ 'card-header': styled }">
       <div class="match-type-container" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
           <label for="vqb-match-type">{{ labels.matchType }}</label>
@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <div class="vqb-group-body" :class="{ 'panel-body': styled }">
+    <div class="vqb-group-body" :class="{ 'card-body': styled }">
       <div class="rule-actions" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
 
@@ -127,7 +127,7 @@ export default {
   computed: {
     classObject () {
       var classObject = {
-        'panel panel-default': this.styled,
+        'card': this.styled,
       }
 
       classObject['depth-' + this.depth.toString()] = this.styled;

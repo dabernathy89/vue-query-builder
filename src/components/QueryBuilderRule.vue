@@ -1,5 +1,5 @@
 <template>
-  <div class="vqb-rule" :class="{ 'panel panel-default form-inline': styled }">
+  <div class="vqb-rule" :class="{ 'card form-inline': styled }">
     <div :class="{ 'form-group': styled }">
       <label>{{ rule.label }}</label>
 
