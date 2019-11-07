@@ -1,6 +1,6 @@
 <template>
-  <div class="vqb-rule" :class="{ 'card form-inline': styled }">
-    <div :class="{ 'form-group': styled }">
+  <div class="vqb-rule" :class="{ 'card': styled }">
+    <div :class="{ 'form-inline': styled }">
       <label>{{ rule.label }}</label>
 
       <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }">
