@@ -7,7 +7,7 @@ import deepClone from '../utilities.js';
 
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['query', 'index', 'rule', 'labels'],
+  props: ['query', 'index', 'rule', 'labels', 'depth'],
 
   computed: {
     isCustomComponent () {

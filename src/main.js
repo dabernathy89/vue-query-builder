@@ -24,6 +24,16 @@ let rules = [
       ]
     },
     {
+      type: "checkbox",
+      id: "sizes",
+      label: "Sizes",
+      choices: [
+        {label: "Small", value: "small"},
+        {label: "Medium", value: "medium"},
+        {label: "Large", value: "large"}
+      ]
+    },
+    {
       type: "text",
       id: "date",
       inputType:"date",

@@ -1,14 +1,14 @@
 <template>
   <!-- eslint-disable vue/no-v-html -->
-  <div class="vqb-rule panel panel-default form-inline">
-    <div class="form-group">
-      <label>{{ rule.label }}</label>
+  <div class="vqb-rule card">
+    <div class="form-inline">
+      <label class="mr-5">{{ rule.label }}</label>
 
       <!-- List of operands (optional) -->
       <select
         v-if="typeof rule.operands !== 'undefined'"
         v-model="query.operand"
-        class="form-control"
+        class="form-control mr-2"
       >
         <option
           v-for="operand in rule.operands"
@@ -22,7 +22,7 @@
       <select
         v-if="typeof rule.operators !== 'undefined' && rule.operators.length > 1"
         v-model="query.operator"
-        class="form-control"
+        class="form-control mr-2"
       >
         <option
           v-for="operator in rule.operators"
@@ -68,40 +68,55 @@
       </template>
 
       <!-- Checkbox input -->
-      <div
+      <template
         v-if="rule.inputType === 'checkbox'"
-        class="checkbox"
       >
-        <label
+        <div
           v-for="choice in rule.choices"
           :key="choice.value"
+          class="form-check form-check-inline"
         >
           <input
+            :id="'depth' + depth + '-' + rule.id + '-' + index + '-' + choice.value"
             v-model="query.value"
             type="checkbox"
             :value="choice.value"
+            class="form-check-input"
           >
-          {{ choice.label }}
-        </label>
-      </div>
+          <label
+            class="form-check-label"
+            :for="'depth' + depth + '-' + rule.id + '-' + index + '-' + choice.value"
+          >
+            {{ choice.label }}
+          </label>
+        </div>
+      </template>
 
       <!-- Radio input -->
-      <div
+      <template
         v-if="rule.inputType === 'radio'"
-        class="radio"
       >
-        <label
+        <div
           v-for="choice in rule.choices"
           :key="choice.value"
+          class="form-check form-check-inline"
         >
           <input
+            :id="'depth' + depth + '-' + rule.id + '-' + index + '-' + choice.value"
             v-model="query.value"
-            :value="choice.value"
+            :name="'depth' + depth + '-' + rule.id + '-' + index"
             type="radio"
+            :value="choice.value"
+            class="form-check-input"
           >
-          {{ choice.label }}
-        </label>
-      </div>
+          <label
+            class="form-check-label"
+            :for="'depth' + depth + '-' + rule.id + '-' + index + '-' + choice.value"
+          >
+            {{ choice.label }}
+          </label>
+        </div>
+      </template>
 
       <!-- Select without groups -->
       <select
@@ -144,7 +159,7 @@
       <!-- Remove rule button -->
       <button
         type="button"
-        class="close pull-right"
+        class="close ml-auto"
         @click="remove"
         v-html="labels.removeRule"
       >

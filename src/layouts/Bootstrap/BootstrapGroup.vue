@@ -1,31 +1,36 @@
 <template>
   <!-- eslint-disable vue/no-v-html -->
   <div
-    class="vqb-group panel panel-default"
+    class="vqb-group card"
     :class="'depth-' + depth.toString()"
   >
-    <div class="vqb-group-heading panel-heading">
+    <div class="vqb-group-heading card-header">
       <div class="match-type-container form-inline">
-        <div class="form-group">
-          <label for="vqb-match-type">{{ labels.matchType }}</label>
-          <select
-            id="vqb-match-type"
-            v-model="query.logicalOperator"
-            class="form-control"
+        <label
+          class="mr-2"
+          for="vqb-match-type"
+        >
+          {{ labels.matchType }}
+        </label>
+
+        <select
+          id="vqb-match-type"
+          v-model="query.logicalOperator"
+          class="form-control"
+        >
+          <option
+            v-for="label in labels.matchTypes"
+            :key="label.id"
+            :value="label.id"
           >
-            <option
-              v-for="label in labels.matchTypes"
-              :key="label.id"
-              :value="label.id"
-            >
-              {{ label.label }}
-            </option>
-          </select>
-        </div>
+            {{ label.label }}
+          </option>
+        </select>
+
         <button
           v-if="depth > 1"
           type="button"
-          class="close pull-right"
+          class="close ml-auto"
           @click="remove"
           v-html="labels.removeGroup"
         >
@@ -33,12 +38,12 @@
       </div>
     </div>
 
-    <div class="vqb-group-body panel-body">
+    <div class="vqb-group-body card-body">
       <div class="rule-actions form-inline">
         <div class="form-group">
           <select
             v-model="selectedRule"
-            class="form-control"
+            class="form-control mr-2"
           >
             <option
               v-for="rule in rules"
@@ -51,7 +56,7 @@
 
           <button
             type="button"
-            class="btn btn-default"
+            class="btn btn-secondary mr-2"
             @click="addRule"
           >
             {{ labels.addRule }}
@@ -60,7 +65,7 @@
           <button
             v-if="depth < maxDepth"
             type="button"
-            class="btn btn-default"
+            class="btn btn-secondary"
             @click="addGroup"
           >
             {{ labels.addGroup }}
@@ -100,10 +105,6 @@ export default {
     background-color: #f5f5f5;
     border-color: #ddd;
     padding: 15px;
-  }
-
-  .vue-query-builder .vqb-rule label {
-    margin-right: 10px;
   }
 
   .vue-query-builder .vqb-group.depth-1 .vqb-rule,
