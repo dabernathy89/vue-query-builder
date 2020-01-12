@@ -13,11 +13,13 @@
     </noscript>
 
     <div id="app">
-      <vue-query-builder :rules="rules" v-model="output"></vue-query-builder>
-
-      --
-
-      <pre>{{ outputFormatted }}</pre>
+      <div class="container" style="margin-top: 40px;">
+        <vue-query-builder :rules="rules" v-model="output"></vue-query-builder>
+        <br>
+        --
+        <p>Output:</p>
+        <pre>{{ outputFormatted }}</pre>
+      </div>
     </div>
     <!-- built files will be auto injected -->
   </body>

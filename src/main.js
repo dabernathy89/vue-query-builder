@@ -27,7 +27,8 @@ let rules = [
       type: "text",
       id: "date",
       inputType:"date",
-      label: "Date"
+      label: "Date",
+      operands: ['Start Date', 'End Date']
     },
     {
       type: "select",
@@ -56,15 +57,15 @@ new Vue({
     output: {},
   },
 
-  methods: {
-    updateQuery: function(value){
-      this.output = value;
-    }
-  },
-
   computed: {
     outputFormatted: function() {
       return JSON.stringify(this.output, null, 2);
     }
   },
+
+  methods: {
+    updateQuery: function(value){
+      this.output = value;
+    }
+  }
 });
