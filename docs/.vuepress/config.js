@@ -19,6 +19,7 @@ module.exports = {
             ['/demos', 'Demos'],
             ['/getting-started', 'Getting Started'],
             ['/configuration', 'Configuration'],
+            ['/custom-templates', 'Custom Templates'],
             ['/roadmap', 'Roadmap'],
             ['/contributing', 'Contributing'],
             ['/about', 'About'],

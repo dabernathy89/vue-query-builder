@@ -1,11 +1,8 @@
 # Roadmap
 
-Vue Query Builder is still in an early phase. Here are some things that are on the roadmap:
+The following items are on the roadmap for Vue Query Builder. I would appreciate any help working on the following tasks:
 
-Immediate:
-- Migrate to slots & scoped slots to allow more user control over layout
-
-Ongoing / long-term:
 - Write unit and integration tests
 - Allow reordering of rules and groups (possibly via drag and drop)
 - Investigate and improve accessibility
+- Additional output formats, or conforming to an existing standard

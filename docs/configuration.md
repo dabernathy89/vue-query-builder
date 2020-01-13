@@ -13,7 +13,6 @@ These are all of the props and events that can be defined on the Vue Query Build
   :rules="rules"
   :maxDepth="3"
   :labels="labels"
-  :styled="styled"
   v-model="query"
   ></vue-query-builder>
 ```
@@ -155,9 +154,3 @@ Provide a value to the `v-model` attribute to give some initial state to the que
     }
   }
 ```
-
----
-
-### styled <Badge text="optional" type="warn" vertical="middle" /> <Badge text="Type: Boolean" vertical="middle" /> <Badge text="Default: true" vertical="middle" />
-
-When true, the component will include Bootstrap 3 CSS classes and some basic styling.
