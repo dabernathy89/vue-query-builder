@@ -1,48 +1,53 @@
 {
   "name": "vue-query-builder",
   "version": "0.7.1",
-  "main": "./dist/VueQueryBuilder.common.js",
   "scripts": {
     "serve": "vue-cli-service serve --name VueQueryBuilder src/main.js",
     "build": "vue-cli-service build --target lib --name VueQueryBuilder src/VueQueryBuilder.vue",
-    "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "lint": "vue-cli-service lint",
+    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress dev docs"
   },
-  "dependencies": {
-    "vue": "^2.6.10"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.4.0",
-    "@vue/cli-plugin-e2e-cypress": "^3.4.0",
-    "@vue/cli-plugin-eslint": "^3.4.0",
-    "@vue/cli-plugin-unit-jest": "^3.4.0",
-    "@vue/cli-service": "^3.4.0",
-    "@vue/eslint-config-standard": "^3.0.5",
-    "@vue/test-utils": "^1.0.0-beta.29",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^24.8.0",
-    "bootstrap": "^3.4.0",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.5",
-    "vuepress": "1.0.2",
-    "@vuepress/core": "1.0.2",
-    "@vuepress/theme-default": "1.0.2"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
+  "main": "./dist/VueQueryBuilder.common.js",
   "files": [
     "dist/",
     "src/",
     "LICENSE",
     "README.md"
+  ],
+  "dependencies": {
+    "core-js": "^3.4.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.2",
+    "@vue/cli-plugin-e2e-cypress": "^4.1.2",
+    "@vue/cli-plugin-eslint": "^4.1.2",
+    "@vue/cli-service": "^4.1.2",
+    "@vue/eslint-config-standard": "^3.0.5",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "@vuepress/core": "1.0.2",
+    "@vuepress/theme-default": "1.0.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.8.0",
+    "bootstrap": "^3.4.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.5",
+    "vuepress": "1.0.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
   ]
 }

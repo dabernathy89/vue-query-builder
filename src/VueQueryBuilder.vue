@@ -1,21 +1,17 @@
 <template>
-  <div class="vue-query-builder" :class="{ 'vue-query-builder-styled': styled }">
-    <query-builder-group
-      :index="0"
-      :query.sync="query"
-      :ruleTypes="ruleTypes"
-      :rules="mergedRules"
-      :maxDepth="maxDepth"
-      :depth="depth"
-      :styled="styled"
-      :labels="mergedLabels"
-      type="query-builder-group"
-      ></query-builder-group>
+  <div class="vue-query-builder">
+    <slot v-bind="vqbProps">
+      <query-builder-group
+        v-bind="vqbProps"
+        :query.sync="query"
+      />
+    </slot>
   </div>
 </template>
 
 <script>
-import QueryBuilderGroup from './components/QueryBuilderGroup.vue';
+/* eslint-disable vue/require-default-prop */
+import QueryBuilderGroup from './layouts/Bootstrap/BootstrapGroup.vue';
 import deepClone from './utilities.js';
 
 var defaultLabels = {
@@ -32,7 +28,7 @@ var defaultLabels = {
 };
 
 export default {
-  name: 'vue-query-builder',
+  name: 'VueQueryBuilder',
 
   components: {
     QueryBuilderGroup
@@ -46,10 +42,6 @@ export default {
         return defaultLabels;
       }
     },
-    styled: {
-      type: Boolean,
-      default: true
-    },
     maxDepth: {
       type: Number,
       default: 3,
@@ -62,7 +54,6 @@ export default {
 
   data () {
     return {
-      depth: 1,
       query: {
         logicalOperator: this.labels.matchTypes[0].id,
         children: []
@@ -129,6 +120,17 @@ export default {
       });
 
       return mergedRules;
+    },
+
+    vqbProps () {
+      return {
+        index: 0,
+        depth: 1,
+        maxDepth: this.maxDepth,
+        ruleTypes: this.ruleTypes,
+        rules: this.mergedRules,
+        labels: this.mergedLabels
+      }
     }
   },
 
@@ -159,47 +161,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .vue-query-builder-styled .vqb-group .rule-actions {
-    margin-bottom: 20px;
-  }
-
-  .vue-query-builder-styled .vqb-rule {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    background-color: #f5f5f5;
-    border-color: #ddd;
-    padding: 15px;
-  }
-
-  .vue-query-builder-styled .vqb-rule label {
-    margin-right: 10px;
-  }
-
-  .vue-query-builder-styled .vqb-group.depth-1 .vqb-rule,
-  .vue-query-builder-styled .vqb-group.depth-2 {
-    border-left: 2px solid #8bc34a;
-  }
-
-  .vue-query-builder-styled .vqb-group.depth-2 .vqb-rule,
-  .vue-query-builder-styled .vqb-group.depth-3 {
-    border-left: 2px solid #00bcd4;
-  }
-
-  .vue-query-builder-styled .vqb-group.depth-3 .vqb-rule,
-  .vue-query-builder-styled .vqb-group.depth-4 {
-    border-left: 2px solid #ff5722;
-  }
-
-  .vue-query-builder-styled .close {
-    opacity: 1;
-    color: rgb(150,150,150);
-  }
-
-  @media (min-width: 768px) {
-    .vue-query-builder-styled .vqb-rule.form-inline .form-group {
-      display: block;
-    }
-  }
-</style>

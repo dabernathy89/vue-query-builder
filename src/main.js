@@ -24,10 +24,21 @@ let rules = [
       ]
     },
     {
+      type: "checkbox",
+      id: "sizes",
+      label: "Sizes",
+      choices: [
+        {label: "Small", value: "small"},
+        {label: "Medium", value: "medium"},
+        {label: "Large", value: "large"}
+      ]
+    },
+    {
       type: "text",
       id: "date",
       inputType:"date",
-      label: "Date"
+      label: "Date",
+      operands: ['Start Date', 'End Date']
     },
     {
       type: "select",
@@ -56,15 +67,15 @@ new Vue({
     output: {},
   },
 
-  methods: {
-    updateQuery: function(value){
-      this.output = value;
-    }
-  },
-
   computed: {
     outputFormatted: function() {
       return JSON.stringify(this.output, null, 2);
     }
   },
+
+  methods: {
+    updateQuery: function(value){
+      this.output = value;
+    }
+  }
 });

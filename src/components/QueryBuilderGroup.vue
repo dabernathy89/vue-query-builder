@@ -1,64 +1,37 @@
 <template>
-  <div class="vqb-group" :class="classObject">
-    <div class="vqb-group-heading" :class="{ 'panel-heading': styled }">
-      <div class="match-type-container" :class="{ 'form-inline': styled }">
-        <div :class="{ 'form-group': styled }">
-          <label for="vqb-match-type">{{ labels.matchType }}</label>
-          <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
-            <option v-for="(label, index) in labels.matchTypes" :key="index" :value="label.id">{{ label.label }}</option>
-          </select>
-        </div>
-        <button type="button" :class="{ 'close pull-right': styled }" v-if="this.depth > 1" @click="remove" v-html="labels.removeGroup"></button>
-      </div>
-    </div>
-
-    <div class="vqb-group-body" :class="{ 'panel-body': styled }">
-      <div class="rule-actions" :class="{ 'form-inline': styled }">
-        <div :class="{ 'form-group': styled }">
-
-          <select v-model="selectedRule" :class="{ 'form-control': styled }">
-            <option v-for="(rule, index) in rules" :key="index" :value="rule">{{ rule.label }}</option>
-          </select>
-
-          <button type="button" @click="addRule" :class="{ 'btn btn-default': styled }" v-html="labels.addRule"></button>
-          <button type="button" :class="{ 'btn btn-default': styled }" v-if="this.depth < this.maxDepth" @click="addGroup" v-html="labels.addGroup"></button>
-        </div>
-      </div>
-
-      <div class="children">
-        <component
-          v-for="(child, index) in query.children"
-          :key="index"
-          :is="child.type"
-          :type="child.type"
-          :query.sync="child.query"
-          :ruleTypes="ruleTypes"
-          :rules="rules"
-          :rule="ruleById(child.query.rule)"
-          :index="index"
-          :maxDepth="maxDepth"
-          :depth="depth + 1"
-          :styled="styled"
-          :labels="labels"
-          v-on:child-deletion-requested="removeChild">
-        </component>
-      </div>
-    </div>
-  </div>
+  <div></div>
 </template>
 
 <script>
-import QueryBuilderRule from './QueryBuilderRule.vue';
+/* eslint-disable vue/require-default-prop */
 import deepClone from '../utilities.js';
+import QueryBuilderChildren from './QueryBuilderChildren.vue';
 
 export default {
-  name: "query-builder-group",
-
   components: {
-    QueryBuilderRule
+    // eslint-disable-next-line vue/no-unused-components
+    QueryBuilderChildren
   },
 
-  props: ['ruleTypes', 'type', 'query', 'rules', 'index', 'maxDepth', 'depth', 'styled', 'labels'],
+  props: {
+    ruleTypes: Object,
+    type: {
+      type: String,
+      default: "query-builder-group"
+    },
+    query: Object,
+    rules: Array,
+    index: Number,
+    maxDepth: Number,
+    depth: Number,
+    labels: Object
+  },
+
+  data() {
+    return {
+      selectedRule: this.rules[0]
+    }
+  },
 
   methods: {
     ruleById (ruleId) {
@@ -80,8 +53,8 @@ export default {
         type: 'query-builder-rule',
         query: {
           rule: this.selectedRule.id,
-          selectedOperator: this.selectedRule.operators[0],
-          selectedOperand: typeof this.selectedRule.operands === "undefined" ? this.selectedRule.label : this.selectedRule.operands[0],
+          operator: this.selectedRule.operators[0],
+          operand: typeof this.selectedRule.operands === "undefined" ? this.selectedRule.label : this.selectedRule.operands[0],
           value: null
         }
       };
@@ -115,24 +88,6 @@ export default {
       let updated_query = deepClone(this.query);
       updated_query.children.splice(index, 1);
       this.$emit('update:query', updated_query);
-    }
-  },
-
-  data () {
-    return {
-      selectedRule: this.rules[0]
-    }
-  },
-
-  computed: {
-    classObject () {
-      var classObject = {
-        'panel panel-default': this.styled,
-      }
-
-      classObject['depth-' + this.depth.toString()] = this.styled;
-
-      return classObject;
     }
   }
 }
