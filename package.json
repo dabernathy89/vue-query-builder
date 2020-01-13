@@ -1,6 +1,6 @@
 {
   "name": "vue-query-builder",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "scripts": {
     "serve": "vue-cli-service serve --name VueQueryBuilder src/main.js",
     "build": "vue-cli-service build --target lib --name VueQueryBuilder src/VueQueryBuilder.vue && vue-cli-service build --no-clean --dest dist/group --target lib --name QueryBuilderGroup src/components/QueryBuilderGroup.vue && vue-cli-service build --no-clean --dest dist/rule --target lib --name QueryBuilderRule src/components/QueryBuilderRule.vue",

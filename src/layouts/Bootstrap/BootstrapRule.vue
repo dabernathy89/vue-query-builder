@@ -59,13 +59,16 @@
       >
 
       <!-- Custom component input -->
-      <template v-if="isCustomComponent">
+      <div
+        v-if="isCustomComponent"
+        class="vqb-custom-component-wrap"
+      >
         <component
           :is="rule.component"
           :value="query.value"
           @input="updateQuery"
         />
-      </template>
+      </div>
 
       <!-- Checkbox input -->
       <template
