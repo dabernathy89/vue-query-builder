@@ -3,7 +3,7 @@
   "version": "0.7.1",
   "scripts": {
     "serve": "vue-cli-service serve --name VueQueryBuilder src/main.js",
-    "build": "vue-cli-service build --target lib --name VueQueryBuilder src/VueQueryBuilder.vue",
+    "build": "vue-cli-service build --target lib --name VueQueryBuilder src/VueQueryBuilder.vue && vue-cli-service build --no-clean --dest dist/group --target lib --name QueryBuilderGroup src/components/QueryBuilderGroup.vue && vue-cli-service build --no-clean --dest dist/rule --target lib --name QueryBuilderRule src/components/QueryBuilderRule.vue",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
