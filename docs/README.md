@@ -59,8 +59,8 @@ export default {
                   "type": "query-builder-rule",
                   "query": {
                     "rule": "first-name",
-                    "selectedOperator": "equals",
-                    "selectedOperand": "First Name",
+                    "operator": "equals",
+                    "operand": "First Name",
                     "value": "John"
                   }
                 },
@@ -68,8 +68,8 @@ export default {
                   "type": "query-builder-rule",
                   "query": {
                     "rule": "first-name",
-                    "selectedOperator": "equals",
-                    "selectedOperand": "First Name",
+                    "operator": "equals",
+                    "operand": "First Name",
                     "value": "Sally"
                   }
                 }
