@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue Query Builder | Vue Query Builder</title>
+    <meta name="description" content="A UI component for building complex queries with nested conditionals.">
+    
+    
+    <link rel="preload" href="/vue-query-builder/assets/css/0.styles.02571eb9.css" as="style"><link rel="preload" href="/vue-query-builder/assets/js/app.42bf73e0.js" as="script"><link rel="preload" href="/vue-query-builder/assets/js/2.bc71bebd.js" as="script"><link rel="preload" href="/vue-query-builder/assets/js/3.e495d7cb.js" as="script"><link rel="prefetch" href="/vue-query-builder/assets/js/10.01a0d343.js"><link rel="prefetch" href="/vue-query-builder/assets/js/11.791463af.js"><link rel="prefetch" href="/vue-query-builder/assets/js/12.c38ee5db.js"><link rel="prefetch" href="/vue-query-builder/assets/js/13.f95b789e.js"><link rel="prefetch" href="/vue-query-builder/assets/js/4.10d717f6.js"><link rel="prefetch" href="/vue-query-builder/assets/js/5.7d7676f6.js"><link rel="prefetch" href="/vue-query-builder/assets/js/6.b698c1b2.js"><link rel="prefetch" href="/vue-query-builder/assets/js/7.fd8e7da5.js"><link rel="prefetch" href="/vue-query-builder/assets/js/8.dd12ede8.js"><link rel="prefetch" href="/vue-query-builder/assets/js/9.2116c641.js">
+    <link rel="stylesheet" href="/vue-query-builder/assets/css/0.styles.02571eb9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vue-query-builder/" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">Vue Query Builder</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/dabernathy89/vue-query-builder" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/dabernathy89/vue-query-builder" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/vue-query-builder/" class="active sidebar-link">Introduction</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/vue-query-builder/demos.html" class="sidebar-link">Demos</a></li><li><a href="/vue-query-builder/getting-started.html" class="sidebar-link">Getting Started</a></li><li><a href="/vue-query-builder/configuration.html" class="sidebar-link">Configuration</a></li><li><a href="/vue-query-builder/custom-templates.html" class="sidebar-link">Custom Templates</a></li><li><a href="/vue-query-builder/roadmap.html" class="sidebar-link">Roadmap</a></li><li><a href="/vue-query-builder/contributing.html" class="sidebar-link">Contributing</a></li><li><a href="/vue-query-builder/about.html" class="sidebar-link">About</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-query-builder"><a href="#vue-query-builder" class="header-anchor">#</a> Vue Query Builder</h1> <p>Vue Query Builder is a user interface that makes it easy for your users to create queries of any kind. It's useful if you need a tool for generating reports, filtering data, and more.</p> <p>Each instance of Vue Query Builder consists of groups and rules. Groups can contain rules and other groups. Each group has, by default, a match type of either &quot;match all&quot; (AND) or &quot;match any&quot; (OR). The component outputs JSON which you can pass to your server to parse.</p> <h3 id="basic-demo"><a href="#basic-demo" class="header-anchor">#</a> Basic Demo</h3> <br> <div class="vue-query-builder"><div class="vqb-group card depth-1"><div class="vqb-group-heading card-header"><div class="match-type-container form-inline"><label for="vqb-match-type" class="mr-2">
+        Match Type
+      </label> <select id="vqb-match-type" class="form-control"><option selected="selected" value="all">
+          All
+        </option><option value="any">
+          Any
+        </option></select> <!----></div></div> <div class="vqb-group-body card-body"><div class="rule-actions form-inline"><div class="form-group"><select class="form-control mr-2"><option selected="selected" value="[object Object]">
+            First Name
+          </option><option value="[object Object]">
+            Last Name
+          </option><option value="[object Object]">
+            Plan Type
+          </option></select> <button type="button" class="btn btn-secondary mr-2">
+          Add Rule
+        </button> <button type="button" class="btn btn-secondary">
+          Add Group
+        </button></div></div> <div type="query-builder-group" index="0" class="vqb-children"></div></div></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/dabernathy89/vue-query-builder/edit/gh-pages/docs/README.md" target="_blank" rel="noopener noreferrer">Edit this page</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/vue-query-builder/demos.html">
+          Demos
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/vue-query-builder/assets/js/app.42bf73e0.js" defer></script><script src="/vue-query-builder/assets/js/2.bc71bebd.js" defer></script><script src="/vue-query-builder/assets/js/3.e495d7cb.js" defer></script>
+  </body>
+</html>
