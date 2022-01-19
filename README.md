@@ -1,6 +1,8 @@
 Vue Query Builder
 ======
 
+## 2022-01-19 - This project is abandoned. I have not had time to work on this in a long time, and there are now actively maintained forks and alternatives. Please check out one of those!
+
 
 #### A UI component for building complex queries with nested conditionals.
 
