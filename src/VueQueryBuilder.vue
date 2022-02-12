@@ -156,7 +156,7 @@ export default {
     });
 
     if ( typeof this.$options.propsData.value !== "undefined" ) {
-      this.query = Object.assign(this.query, this.$options.propsData.value);
+      this.query = deepClone(this.$options.propsData.value);
     }
   }
 }
